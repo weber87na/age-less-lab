@@ -5,24 +5,31 @@
 This repository is a static single-page site for `青春好肌動`.
 
 - `index.html` contains the page structure, responsive image sources, navigation hit areas, and section IDs.
-- `css/style.css` contains all layout, responsive behavior, and visual styling.
+- `css/style.css` contains layout, responsive behavior, and visual styling.
 - `js/main.js` controls section switching and URL hash updates.
 - `img/` contains production-ready desktop and mobile images referenced by the site.
-- `素材/` stores source/reference materials such as presentation files and original brand or social assets. Do not link directly to these files from `index.html` unless they are intentionally prepared for web use.
+- `素材/` stores source and reference materials such as presentation files and original brand or social assets. Do not link directly to these files from `index.html` unless they are intentionally prepared for web use.
 - `.vscode/` contains editor-local settings.
+
+There is no dedicated test directory or build output directory at this time.
 
 ## Build, Test, and Development Commands
 
-There is no build pipeline or package manager configured. The site can be viewed directly by opening `index.html` in a browser.
+There is no build pipeline or package manager configured. View the site by opening `index.html` directly in a browser.
 
 Useful local checks:
 
 ```powershell
 Get-ChildItem
+```
+
+Lists the repository root so you can confirm the expected folders and files.
+
+```powershell
 rg --files
 ```
 
-Use `Get-ChildItem` to inspect the root layout and `rg --files` to verify asset paths before committing changes.
+Lists tracked and discoverable files quickly. Use this to verify image, CSS, and JavaScript paths before editing references.
 
 ## Coding Style & Naming Conventions
 
@@ -34,16 +41,16 @@ When adding new sections, keep IDs, `data-target` values, CSS class names, image
 
 ## Testing Guidelines
 
-No automated tests are currently configured. Validate changes manually in a browser:
+No automated tests are configured. Validate changes manually in a browser:
 
 - Confirm each navigation button displays the expected panel.
 - Confirm URL hashes update correctly, for example `#pricing`.
-- Check both desktop and mobile layouts, especially the `720px` breakpoint.
+- Check desktop and mobile layouts, especially around the `720px` breakpoint.
 - Verify all images load and keep meaningful `alt` text.
 
 ## Commit & Pull Request Guidelines
 
-This directory does not currently include Git history, so use clear, conventional commit messages going forward, such as:
+Use clear, conventional commit messages that describe the user-facing change:
 
 ```text
 Update mobile pricing image
