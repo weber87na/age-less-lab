@@ -5,69 +5,103 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>青春好肌動 | 健康餐</title>
   <meta name="description" content="青春好肌動健康餐，均衡營養、少油少鹽少糖，陪你把健康變日常。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:title" content="青春好肌動 | 健康餐">
+  <meta property="og:description" content="青春好肌動健康餐，均衡營養、少油少鹽少糖，陪你把健康變日常。">
+  <meta property="og:image" content="img/title.png">
+  <meta property="og:image:width" content="1536">
+  <meta property="og:image:height" content="1024">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="青春好肌動 | 健康餐">
+  <meta name="twitter:description" content="青春好肌動健康餐，均衡營養、少油少鹽少糖，陪你把健康變日常。">
+  <meta name="twitter:image" content="img/title.png">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <main class="container">
+    <noscript>
+      <p class="sr-only">此頁面使用 JavaScript 切換關於我們、定價方案、成分簡介、品牌理念與行動力等內容區塊。</p>
+    </noscript>
     <header class="title">
       <div class="title-frame">
-        <button class="nav-hit nav-about" type="button" data-target="about" aria-label="關於我們"></button>
-        <button class="nav-hit nav-pricing" type="button" data-target="pricing" aria-label="定價方案"></button>
-        <button class="nav-hit nav-ingredients" type="button" data-target="ingredients" aria-label="成分簡介"></button>
-        <button class="nav-hit nav-philosophy" type="button" data-target="philosophy" aria-label="品牌理念"></button>
-        <button class="nav-hit nav-actionability" type="button" data-target="actionability" aria-label="行動力"></button>
+        <button class="nav-hit nav-about" type="button" data-target="about" aria-label="關於我們" aria-pressed="true"></button>
+        <button class="nav-hit nav-pricing" type="button" data-target="pricing" aria-label="定價方案" aria-pressed="false"></button>
+        <button class="nav-hit nav-ingredients" type="button" data-target="ingredients" aria-label="成分簡介" aria-pressed="false"></button>
+        <button class="nav-hit nav-philosophy" type="button" data-target="philosophy" aria-label="品牌理念" aria-pressed="false"></button>
+        <button class="nav-hit nav-actionability" type="button" data-target="actionability" aria-label="行動力" aria-pressed="false"></button>
         <picture>
           <source media="(max-width: 720px)" srcset="img/mobile-title.webp" type="image/webp">
           <source media="(max-width: 720px)" srcset="img/mobile-title.png">
           <source srcset="img/title.webp" type="image/webp">
-          <img src="img/title.png" alt="青春好肌動手繪導覽，全素罐頭餐與蔬菜做成的比熊犬">
+          <img src="img/title.png" width="1536" height="1024" loading="eager" decoding="async" fetchpriority="high" alt="青春好肌動手繪導覽，全素罐頭餐與蔬菜做成的比熊犬">
         </picture>
       </div>
     </header>
 
     <section class="panel active" id="about">
+      <div class="sr-only">
+        <h1>青春好肌動健康餐</h1>
+        <p>青春好肌動提供以植物性食材為主的健康餐，主打均衡營養、少油、少鹽、少糖，讓健康飲食更容易融入日常生活。</p>
+      </div>
       <picture>
         <source media="(max-width: 720px)" srcset="img/mobile-about.webp" type="image/webp">
         <source media="(max-width: 720px)" srcset="img/mobile-about.png">
         <source srcset="img/about.webp" type="image/webp">
-        <img src="img/about.png" alt="青春好肌動關於我們，蔬菜做成的比熊犬罐頭餐與社群分享特色">
+        <img src="img/about.png" width="1536" height="1024" loading="eager" decoding="async" alt="青春好肌動關於我們，蔬菜做成的比熊犬罐頭餐與社群分享特色">
       </picture>
     </section>
 
     <section class="panel" id="pricing">
+      <div class="sr-only">
+        <h2>定價方案</h2>
+        <p>青春好肌動定價方案包含 199 元罐頭蔬菜餐、299 元普通比熊犬方案，以及 399 元精裝比熊犬方案。</p>
+      </div>
       <picture>
         <source media="(max-width: 720px)" srcset="img/mobile-pricing.webp" type="image/webp">
         <source media="(max-width: 720px)" srcset="img/mobile-pricing.png">
         <source srcset="img/pricing.webp" type="image/webp">
-        <img src="img/pricing.png" alt="青春好肌動定價方案，199 元罐頭蔬菜餐、299 元普通比熊犬、399 元精裝比熊犬">
+        <img src="img/pricing.png" width="1536" height="1024" loading="lazy" decoding="async" alt="青春好肌動定價方案，199 元罐頭蔬菜餐、299 元普通比熊犬、399 元精裝比熊犬">
       </picture>
     </section>
 
     <section class="panel" id="ingredients">
+      <div class="sr-only">
+        <h2>成分簡介</h2>
+        <p>成分包含花椰菜、青花菜、黑豆海苔、番茄、胡蘿蔔、全穀豆類、菇類與葉菜，組成兼具視覺與營養概念的植物性餐點。</p>
+      </div>
       <picture>
         <source media="(max-width: 720px)" srcset="img/mobile-ingredients.webp" type="image/webp">
         <source media="(max-width: 720px)" srcset="img/mobile-ingredients.png">
         <source srcset="img/ingredients.webp" type="image/webp">
-        <img src="img/ingredients.png" alt="青春好肌動成分簡介，花椰菜、青花菜、黑豆海苔、番茄、胡蘿蔔、全穀豆類與菇類葉菜組成比熊犬">
+        <img src="img/ingredients.png" width="1536" height="1024" loading="lazy" decoding="async" alt="青春好肌動成分簡介，花椰菜、青花菜、黑豆海苔、番茄、胡蘿蔔、全穀豆類與菇類葉菜組成比熊犬">
       </picture>
     </section>
 
     <section class="panel" id="philosophy">
+      <div class="sr-only">
+        <h2>品牌理念</h2>
+        <p>青春好肌動以植物性罐頭餐為核心，結合生活化、機能化與品牌化的理念，讓健康飲食兼具便利、趣味與日常陪伴感。</p>
+      </div>
       <picture>
         <source media="(max-width: 720px)" srcset="img/mobile-philosophy.webp" type="image/webp">
         <source media="(max-width: 720px)" srcset="img/mobile-philosophy.png">
         <source srcset="img/philosophy.webp" type="image/webp">
-        <img src="img/philosophy.png" alt="青春好肌動品牌理念，植物性罐頭餐與蔬菜比熊犬的生活化、機能化、品牌化筆記">
+        <img src="img/philosophy.png" width="1536" height="1024" loading="lazy" decoding="async" alt="青春好肌動品牌理念，植物性罐頭餐與蔬菜比熊犬的生活化、機能化、品牌化筆記">
       </picture>
     </section>
 
     <section class="panel" id="actionability">
+      <div class="sr-only">
+        <h2>行動力</h2>
+        <p>青春好肌動強調免排隊、免加熱、免洗碗，降低用餐流程的時間成本，讓使用者把每年省下的 91 小時留給陪伴與重要生活。</p>
+      </div>
       <picture>
         <source media="(max-width: 720px)" srcset="img/mobile-actionability.webp" type="image/webp">
         <source media="(max-width: 720px)" srcset="img/mobile-actionability.png">
         <source srcset="img/actionability.webp" type="image/webp">
-        <img src="img/actionability.png" alt="青春好肌動行動力，免排隊、免加熱、免洗碗，省下每年 91 小時陪伴的重要時間">
+        <img src="img/actionability.png" width="1536" height="1024" loading="lazy" decoding="async" alt="青春好肌動行動力，免排隊、免加熱、免洗碗，省下每年 91 小時陪伴的重要時間">
       </picture>
     </section>
   </main>
