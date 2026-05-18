@@ -28,3 +28,27 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 panels.forEach((panel) => observer.observe(panel));
+
+/**
+ * 影片滾動視差效果
+ */
+const video = document.querySelector(".feature-video");
+const videoSection = document.querySelector(".video-section");
+
+window.addEventListener("scroll", () => {
+  if (!video || !videoSection) return;
+
+  const sectionRect = videoSection.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  // 當區塊進入視窗時計算偏移量
+  if (sectionRect.top < windowHeight && sectionRect.bottom > 0) {
+    // 計算區塊中心相對於視窗中心的位移 (比例從 -1 到 1)
+    const distanceToCenter = (sectionRect.top + sectionRect.height / 2) - (windowHeight / 2);
+    const scrollRatio = distanceToCenter / (windowHeight / 2);
+    
+    // 設定位移量 (負值代表與捲動方向相反)
+    const translateY = scrollRatio * 50; // 最大位移 50px
+    video.style.transform = `translateY(${translateY}px)`;
+  }
+});

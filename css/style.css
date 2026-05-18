@@ -33,17 +33,36 @@ body {
 }
 
 .video-section {
-  padding: clamp(12px, 2vw, 20px) 0;
-  background: #fffdf7;
+  position: relative;
+  padding: clamp(30px, 5vw, 60px) 0;
+  /* 使用繪製的新質感圖，保留品牌色調與紙張顆粒感 */
+  background-image: url("../img/site-texture.png");
+  background-repeat: repeat;
+  background-size: 512px 512px;
+  overflow: hidden; /* 確保視差位移時不會溢出 */
 }
 
 .feature-video {
+  position: relative;
+  z-index: 2;
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  border-radius: 8px;
-  background: #f3eadb;
+  background: transparent;
+  will-change: transform; /* 優化硬體加速效能 */
+  transition: transform 0.1s ease-out; /* 讓視差移動更平滑 */
+  /* 使用轉換後的透明 PNG 遮罩 */
+  -webkit-mask-image: url("../video/brush.png");
+  mask-image: url("../video/brush.png");
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  /* 加入 drop-shadow 強化層次與融合度 */
+  filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.15));
 }
 
 .parallax-gap {
@@ -149,11 +168,7 @@ img {
   }
 
   .video-section {
-    padding: 0;
-  }
-
-  .feature-video {
-    border-radius: 0;
+    padding: 20px 10px;
   }
 
   .parallax-gap {
