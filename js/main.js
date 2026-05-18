@@ -1,36 +1,30 @@
-const panels = Array.from(document.querySelectorAll(".panel"));
-const buttons = Array.from(document.querySelectorAll("[data-target]"));
+const panels = document.querySelectorAll(".panel");
+const links = document.querySelectorAll(".nav-hit");
 
-function hasPanel(id) {
-  return panels.some((panel) => panel.id === id);
-}
+/**
+ * 使用 IntersectionObserver 追蹤當前捲動到的區塊
+ * 並更新導覽列連結的 aria-current 狀態
+ */
+const observerOptions = {
+  root: null,
+  // 設定 rootMargin 讓判定點稍微靠上，提升使用者體驗
+  rootMargin: "-20% 0px -70% 0px",
+  threshold: 0,
+};
 
-function showPanel(id, historyMode = "replace") {
-  panels.forEach((panel) => {
-    panel.classList.toggle("active", panel.id === id);
-  });
-
-  buttons.forEach((button) => {
-    button.setAttribute("aria-pressed", String(button.dataset.target === id));
-  });
-
-  if (location.hash !== `#${id}`) {
-    if (historyMode === "push") {
-      history.pushState(null, "", `#${id}`);
-    } else if (historyMode === "replace") {
-      history.replaceState(null, "", `#${id}`);
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      links.forEach((link) => {
+        if (link.getAttribute("href") === `#${id}`) {
+          link.setAttribute("aria-current", "page");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
     }
-  }
-}
+  });
+}, observerOptions);
 
-buttons.forEach((button) => {
-  button.addEventListener("click", () => showPanel(button.dataset.target, "push"));
-});
-
-window.addEventListener("popstate", () => {
-  const current = location.hash.slice(1);
-  showPanel(hasPanel(current) ? current : "about", "none");
-});
-
-const initial = location.hash.slice(1);
-showPanel(hasPanel(initial) ? initial : "about");
+panels.forEach((panel) => observer.observe(panel));

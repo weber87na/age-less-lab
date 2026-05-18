@@ -22,15 +22,15 @@
 <body>
   <main class="container">
     <noscript>
-      <p class="sr-only">此頁面使用 JavaScript 切換關於我們、定價方案、成分簡介、品牌理念與行動力等內容區塊。</p>
+      <p class="sr-only">此頁面展示關於我們、定價方案、成分簡介、品牌理念與行動力等內容，可直接向下捲動瀏覽。</p>
     </noscript>
     <header class="title">
       <div class="title-frame">
-        <button class="nav-hit nav-about" type="button" data-target="about" aria-label="關於我們" aria-pressed="true"></button>
-        <button class="nav-hit nav-pricing" type="button" data-target="pricing" aria-label="定價方案" aria-pressed="false"></button>
-        <button class="nav-hit nav-ingredients" type="button" data-target="ingredients" aria-label="成分簡介" aria-pressed="false"></button>
-        <button class="nav-hit nav-philosophy" type="button" data-target="philosophy" aria-label="品牌理念" aria-pressed="false"></button>
-        <button class="nav-hit nav-actionability" type="button" data-target="actionability" aria-label="行動力" aria-pressed="false"></button>
+        <a class="nav-hit nav-about" href="#about" aria-label="關於我們" aria-current="page"></a>
+        <a class="nav-hit nav-pricing" href="#pricing" aria-label="定價方案"></a>
+        <a class="nav-hit nav-ingredients" href="#ingredients" aria-label="成分簡介"></a>
+        <a class="nav-hit nav-philosophy" href="#philosophy" aria-label="品牌理念"></a>
+        <a class="nav-hit nav-actionability" href="#actionability" aria-label="行動力"></a>
         <picture>
           <source media="(max-width: 720px)" srcset="img/mobile-title.webp" type="image/webp">
           <source media="(max-width: 720px)" srcset="img/mobile-title.png">
@@ -40,7 +40,7 @@
       </div>
     </header>
 
-    <section class="panel active" id="about">
+    <section class="panel" id="about">
       <div class="sr-only">
         <h1>青春好肌動健康餐</h1>
         <p>青春好肌動提供以植物性食材為主的健康餐，主打均衡營養、少油、少鹽、少糖，讓健康飲食更容易融入日常生活。</p>

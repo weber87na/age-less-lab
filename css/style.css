@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   overflow-x: hidden;
@@ -55,6 +59,8 @@ img {
   padding: 0;
   background: transparent;
   cursor: pointer;
+  display: block;
+  text-decoration: none;
 }
 
 .nav-hit:focus-visible {
@@ -87,13 +93,6 @@ img {
   width: 15%;
 }
 
-.panel {
-  display: none;
-}
-
-.panel.active {
-  display: block;
-}
 
 @media (max-width: 720px) {
   .container {
