@@ -32,6 +32,20 @@ body {
   position: relative;
 }
 
+.video-section {
+  padding: clamp(12px, 2vw, 20px) 0;
+  background: #fffdf7;
+}
+
+.feature-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #f3eadb;
+}
+
 .parallax-gap {
   min-height: clamp(180px, 28vw, 340px);
   background-color: #fffdf7;
@@ -132,6 +146,14 @@ img {
 @media (max-width: 720px) {
   .container {
     max-width: none;
+  }
+
+  .video-section {
+    padding: 0;
+  }
+
+  .feature-video {
+    border-radius: 0;
   }
 
   .parallax-gap {
