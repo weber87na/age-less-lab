@@ -48,7 +48,8 @@ window.addEventListener("scroll", () => {
     const scrollRatio = distanceToCenter / (windowHeight / 2);
     
     // 設定位移量 (負值代表與捲動方向相反)
-    const translateY = scrollRatio * 50; // 最大位移 50px
-    video.style.transform = `translateY(${translateY}px)`;
+    const translateY = scrollRatio * 120; // 增強位移至 120px
+    const rotate = scrollRatio * 2;       // 加入微小的旋轉 (最大 2 度)
+    video.style.transform = `scale(1.3) translateY(${translateY}px) rotate(${rotate}deg)`;
   }
 });

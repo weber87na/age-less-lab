@@ -50,17 +50,9 @@ body {
   aspect-ratio: 16 / 9;
   object-fit: cover;
   background: transparent;
+  transform: scale(1.3); /* 初始放大倍率，用於切除影片原始黑邊 */
   will-change: transform; /* 優化硬體加速效能 */
-  transition: transform 0.1s ease-out; /* 讓視差移動更平滑 */
-  /* 使用轉換後的透明 PNG 遮罩 */
-  -webkit-mask-image: url("../video/brush.png");
-  mask-image: url("../video/brush.png");
-  -webkit-mask-size: cover;
-  mask-size: cover;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
+  border-radius: 12px; /* 恢復圓角，讓矩形外觀更精緻 */
   /* 加入 drop-shadow 強化層次與融合度 */
   filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.15));
 }
@@ -129,6 +121,12 @@ img {
   cursor: pointer;
   display: block;
   text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.nav-hit:hover {
+  /* 遊戲化互動：滑鼠移過時產生圓形光暈 */
+  background: radial-gradient(circle, rgba(228, 122, 54, 0.4) 0%, transparent 70%);
 }
 
 .nav-hit:focus-visible {
@@ -210,4 +208,52 @@ img {
     width: 92%;
     height: 7%;
   }
+
+  /* 行動版關閉導覽發光效果，避免點擊干擾 */
+  .nav-hit:hover {
+    background: transparent;
+  }
 }
+
+/* --- 環境漂浮粒子樣式 (Phase 2) --- */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  background: rgba(228, 122, 54, 0.15); /* 使用品牌橘色，半透明 */
+  border-radius: 50%;
+  filter: blur(2px);
+  animation: float linear infinite;
+}
+
+.particle.p1 { width: 30px; height: 30px; top: 10%; left: 5%; animation-duration: 20s; opacity: 0.4; }
+.particle.p2 { width: 15px; height: 15px; top: 60%; left: 85%; animation-duration: 25s; animation-delay: -5s; opacity: 0.3; }
+.particle.p3 { width: 40px; height: 40px; top: 40%; left: 15%; animation-duration: 30s; animation-delay: -2s; opacity: 0.2; }
+.particle.p4 { width: 20px; height: 20px; top: 80%; left: 30%; animation-duration: 22s; animation-delay: -8s; opacity: 0.5; }
+.particle.p5 { width: 25px; height: 25px; top: 20%; left: 70%; animation-duration: 28s; animation-delay: -12s; opacity: 0.3; }
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, -50px) rotate(120deg);
+  }
+  66% {
+    transform: translate(-20px, -100px) rotate(240deg);
+  }
+  100% {
+    transform: translate(0, -150px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
