@@ -32,6 +32,41 @@ body {
   position: relative;
 }
 
+.parallax-gap {
+  min-height: clamp(180px, 28vw, 340px);
+  background-color: #fffdf7;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  border-block: 1px solid rgba(44, 44, 44, 0.06);
+}
+
+.parallax-vegetables-1 {
+  background-image: url("../img/parallax-vegetables-1.png");
+  background-image: image-set(
+    url("../img/parallax-vegetables-1.webp") type("image/webp"),
+    url("../img/parallax-vegetables-1.png") type("image/png")
+  );
+}
+
+.parallax-vegetables-2 {
+  background-image: url("../img/parallax-vegetables-2.png");
+  background-image: image-set(
+    url("../img/parallax-vegetables-2.webp") type("image/webp"),
+    url("../img/parallax-vegetables-2.png") type("image/png")
+  );
+  background-position: center 58%;
+}
+
+.parallax-vegetables-3 {
+  background-image: url("../img/parallax-vegetables-3.png");
+  background-image: image-set(
+    url("../img/parallax-vegetables-3.webp") type("image/webp"),
+    url("../img/parallax-vegetables-3.png") type("image/png")
+  );
+}
+
 img {
   display: block;
   width: 100%;
@@ -97,6 +132,11 @@ img {
 @media (max-width: 720px) {
   .container {
     max-width: none;
+  }
+
+  .parallax-gap {
+    min-height: 34vw;
+    background-attachment: scroll;
   }
 
   .nav-about {
