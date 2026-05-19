@@ -266,36 +266,36 @@ img {
     min-height: 250px;
   }
 
-  .veg-asparagus { width: 28px; height: 28px; }
-  .veg-baby-corn { width: 30px; height: 28px; }
-  .veg-beans { width: 32px; height: 20px; }
-  .veg-bok-choy { width: 30px; height: 29px; }
-  .veg-broccoli { width: 32px; height: 31px; }
-  .veg-cabbage { width: 36px; height: 32px; }
-  .veg-carrot { width: 30px; height: 30px; }
-  .veg-carrot-slice { width: 20px; height: 16px; }
-  .veg-cauliflower { width: 34px; height: 31px; }
-  .veg-cucumber-slices { width: 32px; height: 26px; }
-  .veg-edamame-pod { width: 32px; height: 30px; }
-  .veg-eggplant { width: 30px; height: 30px; }
-  .veg-kale-leaf { width: 32px; height: 34px; }
-  .veg-lotus-root-slice { width: 30px; height: 29px; }
-  .veg-mushroom-slice { width: 20px; height: 20px; }
-  .veg-okra { width: 30px; height: 29px; }
-  .veg-pumpkin-wedge { width: 30px; height: 30px; }
-  .veg-quinoa { width: 32px; height: 22px; }
-  .veg-radish { width: 28px; height: 30px; }
-  .veg-red-bell-pepper-ring { width: 18px; height: 18px; }
-  .veg-red-onion-slice { width: 30px; height: 29px; }
-  .veg-romaine-leaf { width: 28px; height: 30px; }
-  .veg-shiitake { width: 28px; height: 27px; }
-  .veg-snap-peas { width: 32px; height: 30px; }
-  .veg-spinach { width: 36px; height: 32px; }
-  .veg-sweet-potato-chunk { width: 30px; height: 28px; }
-  .veg-tomato { width: 26px; height: 27px; }
-  .veg-tomato-half { width: 24px; height: 26px; }
-  .veg-yellow-bell-pepper { width: 28px; height: 31px; }
-  .veg-zucchini-slices { width: 28px; height: 28px; }
+  .veg-asparagus { width: 63px; height: 63px; }
+  .veg-baby-corn { width: 68px; height: 63px; }
+  .veg-beans { width: 72px; height: 45px; }
+  .veg-bok-choy { width: 68px; height: 66px; }
+  .veg-broccoli { width: 72px; height: 71px; }
+  .veg-cabbage { width: 81px; height: 72px; }
+  .veg-carrot { width: 68px; height: 68px; }
+  .veg-carrot-slice { width: 45px; height: 36px; }
+  .veg-cauliflower { width: 77px; height: 71px; }
+  .veg-cucumber-slices { width: 72px; height: 59px; }
+  .veg-edamame-pod { width: 72px; height: 68px; }
+  .veg-eggplant { width: 68px; height: 68px; }
+  .veg-kale-leaf { width: 72px; height: 77px; }
+  .veg-lotus-root-slice { width: 68px; height: 66px; }
+  .veg-mushroom-slice { width: 45px; height: 45px; }
+  .veg-okra { width: 68px; height: 66px; }
+  .veg-pumpkin-wedge { width: 68px; height: 68px; }
+  .veg-quinoa { width: 72px; height: 50px; }
+  .veg-radish { width: 63px; height: 68px; }
+  .veg-red-bell-pepper-ring { width: 41px; height: 41px; }
+  .veg-red-onion-slice { width: 68px; height: 66px; }
+  .veg-romaine-leaf { width: 63px; height: 68px; }
+  .veg-shiitake { width: 63px; height: 62px; }
+  .veg-snap-peas { width: 72px; height: 68px; }
+  .veg-spinach { width: 81px; height: 72px; }
+  .veg-sweet-potato-chunk { width: 68px; height: 63px; }
+  .veg-tomato { width: 59px; height: 62px; }
+  .veg-tomato-half { width: 54px; height: 59px; }
+  .veg-yellow-bell-pepper { width: 63px; height: 71px; }
+  .veg-zucchini-slices { width: 63px; height: 63px; }
 
   .sticky-header {
     height: 50px;
