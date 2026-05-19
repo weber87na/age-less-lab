@@ -4,6 +4,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* 修復錨點跳轉時被懸浮導覽列遮擋的問題 */
+  scroll-padding-top: 70px;
 }
 
 body {
@@ -12,6 +14,13 @@ body {
   background: #fffdf7;
   color: #2c2c2c;
   font-family: Arial, "Microsoft JhengHei", sans-serif;
+  /* 初始淡入儀式感 */
+  opacity: 0;
+  animation: fadeInBody 1.2s ease-out forwards;
+}
+
+@keyframes fadeInBody {
+  to { opacity: 1; }
 }
 
 .container {
@@ -30,6 +39,13 @@ body {
 .title-frame,
 .panel {
   position: relative;
+}
+
+.panel {
+  /* 增加陰影強化層次感 */
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.05));
+  z-index: 2;
+  background: #fffdf7; /* 確保內容區塊有背景色遮擋視差層 */
 }
 
 .video-section {
@@ -57,39 +73,111 @@ body {
   filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.15));
 }
 
-.parallax-gap {
-  min-height: clamp(180px, 28vw, 340px);
-  background-color: #fffdf7;
-  background-position: center;
-  background-size: cover;
+/* --- 蔬菜物件拆解 (PNG Individual Elements) --- */
+.veg-item {
+  position: absolute;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  border-block: 1px solid rgba(44, 44, 44, 0.06);
+  background-size: contain;
+  background-position: center;
+  pointer-events: none;
+  will-change: transform;
 }
 
-.parallax-vegetables-1 {
-  background-image: url("../img/parallax-vegetables-1.png");
-  background-image: image-set(
-    url("../img/parallax-vegetables-1.webp") type("image/webp"),
-    url("../img/parallax-vegetables-1.png") type("image/png")
-  );
+.veg-asparagus { background-image: url('../img/vegetable-items/asparagus.png'); width: 120px; height: 120px; }
+.veg-baby-corn { background-image: url('../img/vegetable-items/baby-corn.png'); width: 130px; height: 118px; }
+.veg-beans { background-image: url('../img/vegetable-items/beans.png'); width: 140px; height: 88px; }
+.veg-bok-choy { background-image: url('../img/vegetable-items/bok-choy.png'); width: 125px; height: 122px; }
+.veg-broccoli { background-image: url('../img/vegetable-items/broccoli.png'); width: 140px; height: 135px; }
+.veg-cabbage { background-image: url('../img/vegetable-items/cabbage.png'); width: 155px; height: 132px; }
+.veg-carrot { background-image: url('../img/vegetable-items/carrot.png'); width: 125px; height: 125px; }
+.veg-carrot-slice { background-image: url('../img/vegetable-items/carrot-slice.png'); width: 80px; height: 60px; }
+.veg-cauliflower { background-image: url('../img/vegetable-items/cauliflower.png'); width: 145px; height: 125px; }
+.veg-cucumber-slices { background-image: url('../img/vegetable-items/cucumber-slices.png'); width: 130px; height: 98px; }
+.veg-edamame-pod { background-image: url('../img/vegetable-items/edamame-pod.png'); width: 130px; height: 118px; }
+.veg-eggplant { background-image: url('../img/vegetable-items/eggplant.png'); width: 125px; height: 125px; }
+.veg-kale-leaf { background-image: url('../img/vegetable-items/kale-leaf.png'); width: 130px; height: 145px; }
+.veg-lotus-root-slice { background-image: url('../img/vegetable-items/lotus-root-slice.png'); width: 125px; height: 122px; }
+.veg-mushroom-slice { background-image: url('../img/vegetable-items/mushroom-slice.png'); width: 85px; height: 85px; }
+.veg-okra { background-image: url('../img/vegetable-items/okra.png'); width: 125px; height: 122px; }
+.veg-pumpkin-wedge { background-image: url('../img/vegetable-items/pumpkin-wedge.png'); width: 125px; height: 125px; }
+.veg-quinoa { background-image: url('../img/vegetable-items/quinoa.png'); width: 130px; height: 85px; }
+.veg-radish { background-image: url('../img/vegetable-items/radish.png'); width: 120px; height: 125px; }
+.veg-red-bell-pepper-ring { background-image: url('../img/vegetable-items/red-bell-pepper-ring.png'); width: 120px; height: 120px; }
+.veg-red-onion-slice { background-image: url('../img/vegetable-items/red-onion-slice.png'); width: 125px; height: 122px; }
+.veg-romaine-leaf { background-image: url('../img/vegetable-items/romaine-leaf.png'); width: 120px; height: 125px; }
+.veg-shiitake { background-image: url('../img/vegetable-items/shiitake.png'); width: 120px; height: 110px; }
+.veg-snap-peas { background-image: url('../img/vegetable-items/snap-peas.png'); width: 130px; height: 120px; }
+.veg-spinach { background-image: url('../img/vegetable-items/spinach.png'); width: 155px; height: 130px; }
+.veg-sweet-potato-chunk { background-image: url('../img/vegetable-items/sweet-potato-chunk.png'); width: 125px; height: 110px; }
+.veg-tomato { background-image: url('../img/vegetable-items/tomato.png'); width: 110px; height: 115px; }
+.veg-tomato-half { background-image: url('../img/vegetable-items/tomato-half.png'); width: 95px; height: 105px; }
+.veg-yellow-bell-pepper { background-image: url('../img/vegetable-items/yellow-bell-pepper.png'); width: 115px; height: 135px; }
+.veg-zucchini-slices { background-image: url('../img/vegetable-items/zucchini-slices.png'); width: 120px; height: 120px; }
+
+/* --- 進階多層次視差容器 --- */
+.parallax-gap {
+  position: relative;
+  width: 100%;
+  min-height: clamp(500px, 70vw, 850px);
+  background-color: #fffdf7;
+  overflow: hidden;
+  border-block: 1px solid rgba(44, 44, 44, 0.04);
+  z-index: 1;
 }
 
-.parallax-vegetables-2 {
-  background-image: url("../img/parallax-vegetables-2.png");
-  background-image: image-set(
-    url("../img/parallax-vegetables-2.webp") type("image/webp"),
-    url("../img/parallax-vegetables-2.png") type("image/png")
-  );
-  background-position: center 58%;
+.para-layer {
+  position: absolute;
+  top: -20%; /* 預留上方空間位移 */
+  left: 0;
+  will-change: transform;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.parallax-vegetables-3 {
-  background-image: url("../img/parallax-vegetables-3.png");
-  background-image: image-set(
-    url("../img/parallax-vegetables-3.webp") type("image/webp"),
-    url("../img/parallax-vegetables-3.png") type("image/png")
-  );
+/* 僅背景與前景層需要滿版尺寸 */
+.layer-bg,
+.layer-front {
+  width: 100%;
+  height: 140%;
+}
+
+/* 遠景層：置入高品質手繪蔬菜底圖 */
+.layer-bg {
+  z-index: 1;
+  background-size: cover;
+  background-position: center bottom;
+  opacity: 0.8; /* 微調透明度增加空氣感 */
+}
+
+.gap-1 .layer-bg { background-image: url('../img/parallax-vegetables-1.png'); }
+.gap-2 .layer-bg { background-image: url('../img/parallax-vegetables-2.png'); }
+.gap-3 .layer-bg { background-image: url('../img/parallax-vegetables-3.png'); }
+
+/* 蔬菜獨立元素：深淺分層 */
+.veg-item {
+  z-index: 5;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.06));
+}
+
+.veg-item.v-far {
+  z-index: 2;
+  filter: blur(1px) brightness(1.1);
+}
+
+.veg-item.v-mid {
+  z-index: 5;
+}
+
+.veg-item.v-near {
+  z-index: 8;
+  /* 近景元素通常較大，且帶有動態模糊感 */
+}
+
+/* 前景層：漂浮的小元素/碎點 */
+.layer-front {
+  background-image: radial-gradient(circle, rgba(228, 122, 54, 0.1) 1.5px, transparent 1.5px);
+  background-size: 60px 60px;
+  z-index: 10;
 }
 
 img {
@@ -165,13 +253,67 @@ img {
     max-width: none;
   }
 
+  html {
+    /* 行動版導覽列高度較矮，調整 offset */
+    scroll-padding-top: 60px;
+  }
+
   .video-section {
     padding: 20px 10px;
   }
 
   .parallax-gap {
-    min-height: 34vw;
-    background-attachment: scroll;
+    min-height: 250px;
+  }
+
+  .veg-asparagus { width: 28px; height: 28px; }
+  .veg-baby-corn { width: 30px; height: 28px; }
+  .veg-beans { width: 32px; height: 20px; }
+  .veg-bok-choy { width: 30px; height: 29px; }
+  .veg-broccoli { width: 32px; height: 31px; }
+  .veg-cabbage { width: 36px; height: 32px; }
+  .veg-carrot { width: 30px; height: 30px; }
+  .veg-carrot-slice { width: 20px; height: 16px; }
+  .veg-cauliflower { width: 34px; height: 31px; }
+  .veg-cucumber-slices { width: 32px; height: 26px; }
+  .veg-edamame-pod { width: 32px; height: 30px; }
+  .veg-eggplant { width: 30px; height: 30px; }
+  .veg-kale-leaf { width: 32px; height: 34px; }
+  .veg-lotus-root-slice { width: 30px; height: 29px; }
+  .veg-mushroom-slice { width: 20px; height: 20px; }
+  .veg-okra { width: 30px; height: 29px; }
+  .veg-pumpkin-wedge { width: 30px; height: 30px; }
+  .veg-quinoa { width: 32px; height: 22px; }
+  .veg-radish { width: 28px; height: 30px; }
+  .veg-red-bell-pepper-ring { width: 18px; height: 18px; }
+  .veg-red-onion-slice { width: 30px; height: 29px; }
+  .veg-romaine-leaf { width: 28px; height: 30px; }
+  .veg-shiitake { width: 28px; height: 27px; }
+  .veg-snap-peas { width: 32px; height: 30px; }
+  .veg-spinach { width: 36px; height: 32px; }
+  .veg-sweet-potato-chunk { width: 30px; height: 28px; }
+  .veg-tomato { width: 26px; height: 27px; }
+  .veg-tomato-half { width: 24px; height: 26px; }
+  .veg-yellow-bell-pepper { width: 28px; height: 31px; }
+  .veg-zucchini-slices { width: 28px; height: 28px; }
+
+  .sticky-header {
+    height: 50px;
+    justify-content: flex-start; /* 改為靠左開始滑動 */
+    overflow-x: auto;
+    padding: 0 10px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sticky-nav {
+    gap: 15px;
+    padding: 5px 0;
+  }
+
+  .sticky-nav a {
+    font-size: 0.85rem;
+    white-space: nowrap; /* 關鍵：防止文字換行 */
+    padding: 4px 12px;
   }
 
   .nav-about {
@@ -235,11 +377,11 @@ img {
   animation: float linear infinite;
 }
 
-.particle.p1 { width: 30px; height: 30px; top: 10%; left: 5%; animation-duration: 20s; opacity: 0.4; }
-.particle.p2 { width: 15px; height: 15px; top: 60%; left: 85%; animation-duration: 25s; animation-delay: -5s; opacity: 0.3; }
-.particle.p3 { width: 40px; height: 40px; top: 40%; left: 15%; animation-duration: 30s; animation-delay: -2s; opacity: 0.2; }
-.particle.p4 { width: 20px; height: 20px; top: 80%; left: 30%; animation-duration: 22s; animation-delay: -8s; opacity: 0.5; }
-.particle.p5 { width: 25px; height: 25px; top: 20%; left: 70%; animation-duration: 28s; animation-delay: -12s; opacity: 0.3; }
+.particle.p1 { width: 15px; height: 15px; top: 10%; left: 5%; animation-duration: 20s; opacity: 0.4; }
+.particle.p2 { width: 8px; height: 8px; top: 60%; left: 85%; animation-duration: 25s; animation-delay: -5s; opacity: 0.3; }
+.particle.p3 { width: 20px; height: 20px; top: 40%; left: 15%; animation-duration: 30s; animation-delay: -2s; opacity: 0.2; }
+.particle.p4 { width: 10px; height: 10px; top: 80%; left: 30%; animation-duration: 22s; animation-delay: -8s; opacity: 0.5; }
+.particle.p5 { width: 12px; height: 12px; top: 20%; left: 70%; animation-duration: 28s; animation-delay: -12s; opacity: 0.3; }
 
 @keyframes float {
   0% {
@@ -255,5 +397,69 @@ img {
     transform: translate(0, -150px) rotate(360deg);
     opacity: 0;
   }
+}
+
+/* --- 視覺優化：進場動畫 (Scroll Reveal) --- */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- 視覺優化：懸浮導覽列 (Sticky Header) --- */
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(255, 253, 247, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.sticky-header.is-visible {
+  transform: translateY(0);
+}
+
+.sticky-nav {
+  display: flex;
+  gap: clamp(10px, 3vw, 30px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sticky-nav a {
+  text-decoration: none;
+  color: #2c2c2c;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.sticky-nav a:hover {
+  background: rgba(228, 122, 54, 0.1);
+  color: #e47a36;
+}
+
+.sticky-nav a[aria-current="page"] {
+  background: #e47a36;
+  color: #fff;
 }
 

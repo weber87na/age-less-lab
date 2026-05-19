@@ -18,8 +18,24 @@
   <meta name="twitter:image" content="img/title.png">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
+  <!-- 引入 GSAP 與 ScrollTrigger 動畫引擎 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
+  <!-- 懸浮導覽列 (Sticky Header) -->
+  <header class="sticky-header" aria-label="快速導覽">
+    <nav>
+      <ul class="sticky-nav">
+        <li><a href="#about">關於我們</a></li>
+        <li><a href="#pricing">定價方案</a></li>
+        <li><a href="#ingredients">成分簡介</a></li>
+        <li><a href="#philosophy">品牌理念</a></li>
+        <li><a href="#actionability">行動力</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <main class="container">
     <noscript>
       <p class="sr-only">此頁面展示關於我們、定價方案、成分簡介、品牌理念與行動力等內容，可直接向下捲動瀏覽。</p>
@@ -68,7 +84,22 @@
       </picture>
     </section>
 
-    <div class="parallax-gap parallax-vegetables-1" aria-hidden="true"></div>
+    <!-- 關於我們與定價之間的拆解式視差 -->
+    <div class="parallax-gap gap-1" aria-hidden="true">
+      <div class="para-layer layer-bg"></div>
+      <!-- 遠景 -->
+      <div class="para-layer veg-item veg-mushroom-slice v-far" style="left: 8%; top: 12%;"></div>
+      <div class="para-layer veg-item veg-beans v-far" style="left: 82%; top: 18%;"></div>
+      <div class="para-layer veg-item veg-carrot-slice v-far" style="left: 35%; top: 6%;"></div>
+      <!-- 中景 -->
+      <div class="para-layer veg-item veg-broccoli v-mid" style="left: 14%; top: 38%;"></div>
+      <div class="para-layer veg-item veg-cauliflower v-mid" style="left: 62%; top: 28%;"></div>
+      <div class="para-layer veg-item veg-yellow-bell-pepper v-mid" style="left: 46%; top: 56%;"></div>
+      <!-- 近景 -->
+      <div class="para-layer veg-item veg-tomato v-near" style="left: 42%; top: 72%;"></div>
+      <div class="para-layer veg-item veg-edamame-pod v-near" style="left: 72%; top: 66%;"></div>
+      <div class="para-layer layer-front"></div>
+    </div>
 
     <section class="panel" id="pricing">
       <div class="sr-only">
@@ -83,7 +114,19 @@
       </picture>
     </section>
 
-    <div class="parallax-gap parallax-vegetables-2" aria-hidden="true"></div>
+    <!-- 定價與成分之間的拆解式視差 -->
+    <div class="parallax-gap gap-2" aria-hidden="true">
+      <div class="para-layer layer-bg"></div>
+      <div class="para-layer veg-item veg-tomato-half v-far" style="left: 9%; top: 10%;"></div>
+      <div class="para-layer veg-item veg-baby-corn v-far" style="left: 76%; top: 12%;"></div>
+      <div class="para-layer veg-item veg-shiitake v-mid" style="left: 75%; top: 44%;"></div>
+      <div class="para-layer veg-item veg-quinoa v-mid" style="left: 30%; top: 50%;"></div>
+      <div class="para-layer veg-item veg-red-onion-slice v-mid" style="left: 52%; top: 22%;"></div>
+      <div class="para-layer veg-item veg-asparagus v-near" style="left: 13%; top: 62%;"></div>
+      <div class="para-layer veg-item veg-cabbage v-near" style="left: 63%; top: 80%;"></div>
+      <div class="para-layer veg-item veg-okra v-near" style="left: 42%; top: 74%;"></div>
+      <div class="para-layer layer-front"></div>
+    </div>
 
     <section class="panel" id="ingredients">
       <div class="sr-only">
@@ -98,7 +141,19 @@
       </picture>
     </section>
 
-    <div class="parallax-gap parallax-vegetables-3" aria-hidden="true"></div>
+    <!-- 成分與理念之間的拆解式視差 -->
+    <div class="parallax-gap gap-3" aria-hidden="true">
+      <div class="para-layer layer-bg"></div>
+      <div class="para-layer veg-item veg-lotus-root-slice v-far" style="left: 6%; top: 14%;"></div>
+      <div class="para-layer veg-item veg-zucchini-slices v-far" style="left: 82%; top: 20%;"></div>
+      <div class="para-layer veg-item veg-spinach v-mid" style="left: 48%; top: 38%;"></div>
+      <div class="para-layer veg-item veg-cucumber-slices v-mid" style="left: 76%; top: 42%;"></div>
+      <div class="para-layer veg-item veg-romaine-leaf v-mid" style="left: 24%; top: 28%;"></div>
+      <div class="para-layer veg-item veg-carrot v-near" style="left: 18%; top: 58%;"></div>
+      <div class="para-layer veg-item veg-kale-leaf v-near" style="left: 66%; top: 76%;"></div>
+      <div class="para-layer veg-item veg-pumpkin-wedge v-near" style="left: 40%; top: 72%;"></div>
+      <div class="para-layer layer-front"></div>
+    </div>
 
     <section class="panel" id="philosophy">
       <div class="sr-only">
@@ -113,7 +168,17 @@
       </picture>
     </section>
 
-    <div class="parallax-gap parallax-vegetables-1" aria-hidden="true"></div>
+    <div class="parallax-gap gap-1" aria-hidden="true">
+      <div class="para-layer layer-bg"></div>
+      <div class="para-layer veg-item veg-sweet-potato-chunk v-far" style="left: 12%; top: 14%;"></div>
+      <div class="para-layer veg-item veg-red-bell-pepper-ring v-far" style="left: 70%; top: 12%;"></div>
+      <div class="para-layer veg-item veg-bok-choy v-mid" style="left: 18%; top: 54%;"></div>
+      <div class="para-layer veg-item veg-snap-peas v-mid" style="left: 50%; top: 32%;"></div>
+      <div class="para-layer veg-item veg-eggplant v-mid" style="left: 80%; top: 58%;"></div>
+      <div class="para-layer veg-item veg-radish v-near" style="left: 8%; top: 26%;"></div>
+      <div class="para-layer veg-item veg-tomato v-near" style="left: 38%; top: 76%;"></div>
+      <div class="para-layer layer-front"></div>
+    </div>
 
     <section class="panel" id="actionability">
       <div class="sr-only">
