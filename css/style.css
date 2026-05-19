@@ -52,7 +52,7 @@ body {
   position: relative;
   padding: clamp(30px, 5vw, 60px) 0;
   /* 使用繪製的新質感圖，保留品牌色調與紙張顆粒感 */
-  background-image: url("../img/site-texture.png");
+  background-image: url("../img/site-texture.webp");
   background-repeat: repeat;
   background-size: 512px 512px;
   overflow: hidden; /* 確保視差位移時不會溢出 */
@@ -83,36 +83,36 @@ body {
   will-change: transform;
 }
 
-.veg-asparagus { background-image: url('../img/vegetable-items/asparagus.png'); width: 120px; height: 120px; }
-.veg-baby-corn { background-image: url('../img/vegetable-items/baby-corn.png'); width: 130px; height: 118px; }
-.veg-beans { background-image: url('../img/vegetable-items/beans.png'); width: 140px; height: 88px; }
-.veg-bok-choy { background-image: url('../img/vegetable-items/bok-choy.png'); width: 125px; height: 122px; }
-.veg-broccoli { background-image: url('../img/vegetable-items/broccoli.png'); width: 140px; height: 135px; }
-.veg-cabbage { background-image: url('../img/vegetable-items/cabbage.png'); width: 155px; height: 132px; }
-.veg-carrot { background-image: url('../img/vegetable-items/carrot.png'); width: 125px; height: 125px; }
-.veg-carrot-slice { background-image: url('../img/vegetable-items/carrot-slice.png'); width: 80px; height: 60px; }
-.veg-cauliflower { background-image: url('../img/vegetable-items/cauliflower.png'); width: 145px; height: 125px; }
-.veg-cucumber-slices { background-image: url('../img/vegetable-items/cucumber-slices.png'); width: 130px; height: 98px; }
-.veg-edamame-pod { background-image: url('../img/vegetable-items/edamame-pod.png'); width: 130px; height: 118px; }
-.veg-eggplant { background-image: url('../img/vegetable-items/eggplant.png'); width: 125px; height: 125px; }
-.veg-kale-leaf { background-image: url('../img/vegetable-items/kale-leaf.png'); width: 130px; height: 145px; }
-.veg-lotus-root-slice { background-image: url('../img/vegetable-items/lotus-root-slice.png'); width: 125px; height: 122px; }
-.veg-mushroom-slice { background-image: url('../img/vegetable-items/mushroom-slice.png'); width: 85px; height: 85px; }
-.veg-okra { background-image: url('../img/vegetable-items/okra.png'); width: 125px; height: 122px; }
-.veg-pumpkin-wedge { background-image: url('../img/vegetable-items/pumpkin-wedge.png'); width: 125px; height: 125px; }
-.veg-quinoa { background-image: url('../img/vegetable-items/quinoa.png'); width: 130px; height: 85px; }
-.veg-radish { background-image: url('../img/vegetable-items/radish.png'); width: 120px; height: 125px; }
-.veg-red-bell-pepper-ring { background-image: url('../img/vegetable-items/red-bell-pepper-ring.png'); width: 120px; height: 120px; }
-.veg-red-onion-slice { background-image: url('../img/vegetable-items/red-onion-slice.png'); width: 125px; height: 122px; }
-.veg-romaine-leaf { background-image: url('../img/vegetable-items/romaine-leaf.png'); width: 120px; height: 125px; }
-.veg-shiitake { background-image: url('../img/vegetable-items/shiitake.png'); width: 120px; height: 110px; }
-.veg-snap-peas { background-image: url('../img/vegetable-items/snap-peas.png'); width: 130px; height: 120px; }
-.veg-spinach { background-image: url('../img/vegetable-items/spinach.png'); width: 155px; height: 130px; }
-.veg-sweet-potato-chunk { background-image: url('../img/vegetable-items/sweet-potato-chunk.png'); width: 125px; height: 110px; }
-.veg-tomato { background-image: url('../img/vegetable-items/tomato.png'); width: 110px; height: 115px; }
-.veg-tomato-half { background-image: url('../img/vegetable-items/tomato-half.png'); width: 95px; height: 105px; }
-.veg-yellow-bell-pepper { background-image: url('../img/vegetable-items/yellow-bell-pepper.png'); width: 115px; height: 135px; }
-.veg-zucchini-slices { background-image: url('../img/vegetable-items/zucchini-slices.png'); width: 120px; height: 120px; }
+.veg-asparagus { background-image: url('../img/vegetable-items/asparagus.webp'); width: 120px; height: 120px; }
+.veg-baby-corn { background-image: url('../img/vegetable-items/baby-corn.webp'); width: 130px; height: 118px; }
+.veg-beans { background-image: url('../img/vegetable-items/beans.webp'); width: 140px; height: 88px; }
+.veg-bok-choy { background-image: url('../img/vegetable-items/bok-choy.webp'); width: 125px; height: 122px; }
+.veg-broccoli { background-image: url('../img/vegetable-items/broccoli.webp'); width: 140px; height: 135px; }
+.veg-cabbage { background-image: url('../img/vegetable-items/cabbage.webp'); width: 155px; height: 132px; }
+.veg-carrot { background-image: url('../img/vegetable-items/carrot.webp'); width: 125px; height: 125px; }
+.veg-carrot-slice { background-image: url('../img/vegetable-items/carrot-slice.webp'); width: 80px; height: 60px; }
+.veg-cauliflower { background-image: url('../img/vegetable-items/cauliflower.webp'); width: 145px; height: 125px; }
+.veg-cucumber-slices { background-image: url('../img/vegetable-items/cucumber-slices.webp'); width: 130px; height: 98px; }
+.veg-edamame-pod { background-image: url('../img/vegetable-items/edamame-pod.webp'); width: 130px; height: 118px; }
+.veg-eggplant { background-image: url('../img/vegetable-items/eggplant.webp'); width: 125px; height: 125px; }
+.veg-kale-leaf { background-image: url('../img/vegetable-items/kale-leaf.webp'); width: 130px; height: 145px; }
+.veg-lotus-root-slice { background-image: url('../img/vegetable-items/lotus-root-slice.webp'); width: 125px; height: 122px; }
+.veg-mushroom-slice { background-image: url('../img/vegetable-items/mushroom-slice.webp'); width: 85px; height: 85px; }
+.veg-okra { background-image: url('../img/vegetable-items/okra.webp'); width: 125px; height: 122px; }
+.veg-pumpkin-wedge { background-image: url('../img/vegetable-items/pumpkin-wedge.webp'); width: 125px; height: 125px; }
+.veg-quinoa { background-image: url('../img/vegetable-items/quinoa.webp'); width: 130px; height: 85px; }
+.veg-radish { background-image: url('../img/vegetable-items/radish.webp'); width: 120px; height: 125px; }
+.veg-red-bell-pepper-ring { background-image: url('../img/vegetable-items/red-bell-pepper-ring.webp'); width: 120px; height: 120px; }
+.veg-red-onion-slice { background-image: url('../img/vegetable-items/red-onion-slice.webp'); width: 125px; height: 122px; }
+.veg-romaine-leaf { background-image: url('../img/vegetable-items/romaine-leaf.webp'); width: 120px; height: 125px; }
+.veg-shiitake { background-image: url('../img/vegetable-items/shiitake.webp'); width: 120px; height: 110px; }
+.veg-snap-peas { background-image: url('../img/vegetable-items/snap-peas.webp'); width: 130px; height: 120px; }
+.veg-spinach { background-image: url('../img/vegetable-items/spinach.webp'); width: 155px; height: 130px; }
+.veg-sweet-potato-chunk { background-image: url('../img/vegetable-items/sweet-potato-chunk.webp'); width: 125px; height: 110px; }
+.veg-tomato { background-image: url('../img/vegetable-items/tomato.webp'); width: 110px; height: 115px; }
+.veg-tomato-half { background-image: url('../img/vegetable-items/tomato-half.webp'); width: 95px; height: 105px; }
+.veg-yellow-bell-pepper { background-image: url('../img/vegetable-items/yellow-bell-pepper.webp'); width: 115px; height: 135px; }
+.veg-zucchini-slices { background-image: url('../img/vegetable-items/zucchini-slices.webp'); width: 120px; height: 120px; }
 
 /* --- 進階多層次視差容器 --- */
 .parallax-gap {
@@ -149,9 +149,9 @@ body {
   opacity: 0.8; /* 微調透明度增加空氣感 */
 }
 
-.gap-1 .layer-bg { background-image: url('../img/parallax-vegetables-1.png'); }
-.gap-2 .layer-bg { background-image: url('../img/parallax-vegetables-2.png'); }
-.gap-3 .layer-bg { background-image: url('../img/parallax-vegetables-3.png'); }
+.gap-1 .layer-bg { background-image: url('../img/parallax-vegetables-1.webp'); }
+.gap-2 .layer-bg { background-image: url('../img/parallax-vegetables-2.webp'); }
+.gap-3 .layer-bg { background-image: url('../img/parallax-vegetables-3.webp'); }
 
 /* 蔬菜獨立元素：深淺分層 */
 .veg-item {
