@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W13 全通路整合 (O2O) 實戰課程地圖 - 翻轉行銷思維</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter & Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans TC', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#1e1b4b',
+                            accent: '#a855f7', // Purple-500
+                            darkBg: '#0b0f19',
+                            cardBg: '#161b26'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom dynamic scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3730a3;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4f46e5;
+        }
+        /* Custom animations */
+        @keyframes pulse-gaze {
+            0%, 100% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.05); opacity: 0.4; }
+        }
+        .animate-pulse-gaze {
+            animation: pulse-gaze 8s infinite ease-in-out;
+        }
+        .glass-panel {
+            background: rgba(22, 27, 38, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-brand-darkBg text-slate-100 font-sans antialiased min-h-screen selection:bg-brand-500 selection:text-white">
+
+    <!-- Background Decorative Elements -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute -top-[40%] -left-[20%] w-[80%] h-[80%] rounded-full bg-gradient-to-tr from-brand-600/20 to-brand-accent/20 blur-[120px] animate-pulse-gaze"></div>
+        <div class="absolute -bottom-[20%] -right-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-br from-indigo-500/10 to-purple-800/20 blur-[100px] animate-pulse-gaze" style="animation-delay: -4s;"></div>
+    </div>
+
+    <!-- Notification / Toast (Custom, No alert) -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 ease-out flex items-center p-4 space-x-3 w-max max-w-sm bg-brand-cardBg border border-green-500/30 text-slate-200 rounded-xl shadow-2xl">
+        <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center text-green-400">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="text-sm font-medium" id="toast-message">提示詞已成功複製到剪貼簿！</div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 w-full glass-panel border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 to-brand-accent flex items-center justify-center text-white font-black text-xl shadow-lg shadow-brand-500/20">
+                    M
+                </div>
+                <div>
+                    <h1 class="text-base sm:text-lg font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent leading-tight">行銷管理研究</h1>
+                    <p class="text-[10px] sm:text-xs text-brand-400 tracking-wider font-semibold">翻轉行銷思維 • 傅振瑞老師</p>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#core-concept" class="text-slate-300 hover:text-white transition text-sm font-medium">核心理念</a>
+                <a href="#theme-scenarios" class="text-slate-300 hover:text-white transition text-sm font-medium">組別導航</a>
+                <a href="#timeline" class="text-slate-300 hover:text-white transition text-sm font-medium">180M課程地圖</a>
+                <a href="#simulator" class="text-slate-300 hover:text-white transition text-sm font-medium">O2O漏斗模擬</a>
+                <a href="#ai-tools" class="text-slate-300 hover:text-white transition text-sm font-medium">AI工具指南</a>
+                <a href="#deliverables" class="text-slate-300 hover:text-white transition text-sm font-medium">交付與評量</a>
+            </nav>
+            <div class="flex items-center space-x-2">
+                <button onclick="toggleSyllabusModal()" class="px-4 py-2 text-xs sm:text-sm bg-white/5 border border-white/10 hover:bg-white/10 rounded-xl transition font-medium flex items-center space-x-2">
+                    <i class="fas fa-book-open"></i>
+                    <span class="hidden sm:inline">18週大綱速覽</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-12 sm:space-y-16">
+        
+        <!-- Hero Section -->
+        <section class="text-center max-w-4xl mx-auto space-y-6 pt-4 sm:pt-8">
+            <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs sm:text-sm font-semibold tracking-wider">
+                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                <span>SPRINT 3: 流量與轉換 • 第十三週課程</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight bg-gradient-to-b from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
+                全通路整合 (O2O) <br class="hidden sm:inline" />
+                <span class="bg-gradient-to-r from-brand-400 via-indigo-400 to-brand-accent bg-clip-text">快閃實戰特訓</span>
+            </h1>
+            <p class="text-slate-400 text-base sm:text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+                「好的行銷不是在線上自嗨，而是精準串聯虛實。我們將在高雄駁二特區模擬一場真實的 O2O 快閃戰役，用數據漏斗證明你們的商業敏銳度。」
+            </p>
+            <div class="flex flex-wrap justify-center gap-3 pt-2">
+                <div class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-brand-cardBg/60 border border-white/5 text-xs sm:text-sm text-slate-300">
+                    <i class="far fa-clock text-brand-400"></i>
+                    <span>實戰時長: 180 分鐘</span>
+                </div>
+                <div class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-brand-cardBg/60 border border-white/5 text-xs sm:text-sm text-slate-300">
+                    <i class="fas fa-robot text-brand-400"></i>
+                    <span>AI 副手: Gemini & NotebookLM</span>
+                </div>
+                <div class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-brand-cardBg/60 border border-white/5 text-xs sm:text-sm text-slate-300">
+                    <i class="fas fa-map-marker-alt text-brand-400"></i>
+                    <span>實戰場域: 高雄駁二特區</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Concept - Top-Down Trigger -->
+        <section id="core-concept" class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
+            <div class="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-brand-cardBg to-brand-cardBg/40 border border-white/10 flex flex-col justify-between space-y-6">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-500/10 border border-brand-500/25 flex items-center justify-center text-brand-400 text-xl">
+                        <i class="fas fa-bolt animate-bounce"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold">本週任務導向 (Top-Down Trigger)</h3>
+                    <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                        各組新創家，投資人為你們撥款了 <strong>50,000 元虛擬預算</strong>。你們必須在駁二特區規劃為期兩天的實體快閃店。
+                        目標不只是「擺攤展示」，而是要建立一套
+                        <span class="text-brand-400 font-semibold">【線上引流 → 線下五感體驗 →線上社群裂變與下單】</span>
+                        的完美 O2O 閉環，並利用 AI 工具精密計算各漏斗節點的轉化率與投資報酬率。
+                    </p>
+                </div>
+                <div class="p-4 rounded-2xl bg-brand-darkBg/60 border border-white/5 space-y-2">
+                    <h4 class="text-xs font-semibold text-brand-400 tracking-wider uppercase"><i class="fas fa-exclamation-triangle mr-2"></i>面臨的知識缺口 (The Knowledge Gap)</h4>
+                    <p class="text-xs text-slate-400">學生常常缺乏「通路整合」的全局觀，容易將企劃碎片化，甚至在被要求估算「路過進店率」、「提袋率」與「ROI」等實戰指標時完全卡關、不知如何著手。</p>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-5 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-indigo-950/40 to-brand-darkBg border border-brand-500/20 flex flex-col justify-between space-y-6">
+                <div class="space-y-4">
+                    <h3 class="text-xl sm:text-2xl font-bold flex items-center space-x-3">
+                        <span class="flex h-3 w-3 relative">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-accent"></span>
+                        </span>
+                        <span>智者導師的叮嚀</span>
+                    </h3>
+                    <p class="text-slate-300 italic text-sm sm:text-base leading-relaxed font-light">
+                        「行銷是一門結合藝術與科學的決策學問。線上社群的百萬瀏覽，如果無法在實體空間裡沉澱為一次讓人心跳加速的五感體驗，那就是無效的曝光。
+                        同樣地，如果實體體驗玩得熱鬧，卻沒能將數據導回數位漏斗，那只是浪費預算的自嗨。這週，我要你們跟 AI 進行高強度的邏輯辯證，拿出一份真正可以說服投資人的商業企劃。」
+                    </p>
+                </div>
+                <div class="flex items-center space-x-3 border-t border-white/5 pt-4">
+                    <div class="w-10 h-10 rounded-full bg-brand-500 flex items-center justify-center text-white font-black text-sm">傅</div>
+                    <div>
+                        <p class="text-xs sm:text-sm font-semibold">傅振瑞 教授</p>
+                        <p class="text-[10px] text-slate-500">翻轉行銷思維研究主持教授</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Theme Scenarios Selector -->
+        <section id="theme-scenarios" class="space-y-6">
+            <div class="text-center md:text-left space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-extrabold flex items-center justify-center md:justify-start space-x-3">
+                    <i class="fas fa-puzzle-piece text-brand-400"></i>
+                    <span>六大組別 • O2O 專屬場景導航</span>
+                </h2>
+                <p class="text-slate-400 text-sm max-w-3xl">點選你們組別的創業主題，即刻動態展開專屬的快閃店體驗設計、O2O 閉環路線以及 AI 模擬引導提示詞：</p>
+            </div>
+
+            <!-- Group Theme Tab Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-3">
+                <button onclick="switchTheme('clean')" id="tab-clean" class="theme-tab px-4 py-3 rounded-2xl bg-brand-cardBg border border-brand-500/30 text-brand-400 text-xs sm:text-sm font-semibold transition flex flex-col items-center justify-center space-y-2 hover:border-brand-400 hover:bg-brand-500/5">
+                    <i class="fas fa-soap text-lg"></i>
+                    <span class="text-center leading-tight">淨亮清潔清潔劑</span>
+                </button>
+                <button onclick="switchTheme('space')" id="tab-space" class="theme-tab px-4 py-3 rounded-2xl bg-white/5 border border-white/5 text-slate-400 text-xs sm:text-sm font-semibold transition flex flex-col items-center justify-center space-y-2 hover:border-brand-400 hover:bg-white/10">
+                    <i class="fas fa-couch text-lg"></i>
+                    <span class="text-center leading-tight">空間智癒室內斷捨離</span>
+                </button>
+                <button onclick="switchTheme('protein')" id="tab-protein" class="theme-tab px-4 py-3 rounded-2xl bg-white/5 border border-white/5 text-slate-400 text-xs sm:text-sm font-semibold transition flex flex-col items-center justify-center space-y-2 hover:border-brand-400 hover:bg-white/10">
+                    <i class="fas fa-dumbbell text-lg"></i>
+                    <span class="text-center leading-tight">青春好肌動素食蛋白</span>
+                </button>
+                <button onclick="switchTheme('coffee')" id="tab-coffee" class="theme-tab px-4 py-3 rounded-2xl bg-white/5 border border-white/5 text-slate-400 text-xs sm:text-sm font-semibold transition flex flex-col items-center justify-center space-y-2 hover:border-brand-400 hover:bg-white/10">
+                    <i class="fas fa-coffee text-lg"></i>
+                    <span class="text-center leading-tight">行動智慧咖啡</span>
+                </button>
+                <button onclick="switchTheme('hair')" id="tab-hair" class="theme-tab px-4 py-3 rounded-2xl bg-white/5 border border-white/5 text-slate-400 text-xs sm:text-sm font-semibold transition flex flex-col items-center justify-center space-y-2 hover:border-brand-400 hover:bg-white/10">
+                    <i class="fas fa-magic text-lg"></i>
+                    <span class="text-center leading-tight">奇蹟生髮梳</span>
+                </button>
+                <button onclick="switchTheme('raincoat')" id="tab-raincoat" class="theme-tab px-4 py-3 rounded-2xl bg-white/5 border border-white/5 text-slate-400 text-xs sm:text-sm font-semibold transition flex flex-col items-center justify-center space-y-2 hover:border-brand-400 hover:bg-white/10">
+                    <i class="fas fa-cloud-showers-heavy text-lg"></i>
+                    <span class="text-center leading-tight">遮風擋雨雨衣</span>
+                </button>
+            </div>
+
+            <!-- Theme Detail Panel (Dynamic Content) -->
+            <div id="theme-panel" class="p-6 sm:p-8 rounded-3xl bg-brand-cardBg/90 border border-white/10 space-y-6 sm:space-y-8 relative overflow-hidden">
+                <!-- Watermark -->
+                <div class="absolute -bottom-8 -right-8 text-white/5 text-[120px] font-black select-none pointer-events-none" id="theme-watermark">CLEAN</div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+                    <!-- Left: Strategy details -->
+                    <div class="lg:col-span-7 space-y-6 relative z-10">
+                        <div class="flex items-center space-x-3">
+                            <span class="px-2.5 py-1 text-xs bg-brand-500/20 border border-brand-500/30 text-brand-300 font-bold rounded-lg" id="theme-badge">淨亮清潔清潔劑組</span>
+                            <span class="text-slate-400 text-xs">O2O 創意定向規劃</span>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold" id="theme-title">極簡白科技洗滌體驗艙</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="border-l-2 border-brand-500 pl-4 space-y-1">
+                                <h4 class="text-xs font-semibold text-slate-400 tracking-wider">快閃體驗核心 (Experience Strategy)</h4>
+                                <p class="text-slate-200 text-sm" id="theme-experience">現場打造如極簡實驗室般的超白美學洗滌艙，不主推推銷，而是邀請消費者攜帶一件「最心愛但有頑固污漬」的衣物前來，利用 AI 污漬診斷儀和淨亮洗劑現場進行 15 分鐘超淨化洗滌體驗。現場展示「奇蹟除垢」的驚人瞬間。</p>
+                            </div>
+                            
+                            <div class="border-l-2 border-brand-accent pl-4 space-y-1">
+                                <h4 class="text-xs font-semibold text-slate-400 tracking-wider">O2O 閉環設計 (O2O Closed-Loop)</h4>
+                                <p class="text-slate-200 text-sm" id="theme-loop">【線上】發起「#尋找高雄最髒的衣領」社群挑戰賽，預約免費現場極速洗劑SPA；【線下】現場體驗洗滌前後對比，並在 3D 質感發光櫥窗前與「復活的衣物」拍照打卡，獲得線下專屬 QR Code 折扣碼；【轉化】掃碼後直達線上官網訂購，且下單即隨機贈送旅行試用包，引發社群二次開箱裂變。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: AI Co-pilot Generator -->
+                    <div class="lg:col-span-5 p-5 rounded-2xl bg-brand-darkBg/80 border border-white/5 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-brand-400 uppercase tracking-wider"><i class="fas fa-terminal mr-2"></i>組別專屬 AI 提示詞 (Prompt)</span>
+                            <span class="text-[10px] text-slate-500">Gemini 策略規劃專用</span>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed">我們已經為你們寫好了與 AI 共同腦力激盪的引導 Prompt。點擊下方一鍵複製，餵給 Gemini 來開啟對話吧！</p>
+                        
+                        <!-- Prompt box -->
+                        <div class="relative group">
+                            <textarea id="prompt-box" readonly class="w-full h-40 p-3 text-xs font-mono bg-brand-cardBg text-slate-300 rounded-xl border border-white/10 focus:outline-none resize-none">請扮演資深零售通路行銷總監。我們的主題是「淨亮清潔清潔劑」，預計在駁二特區舉辦一場 O2O 快閃活動。請幫我們規劃：
+1. 3 個能激發消費者好奇心、將其從線上引流至現場的「獵奇性實體體驗」點子。
+2. 針對「現場體驗後，如何引導消費者高機率掃碼轉入線上官方商城購買」設計一組極具誘惑力的通路促銷機制。
+3. 預估這場活動的「路過進店率」與「線下轉線上購買率」的合理區間，並說明理由。</textarea>
+                            <button onclick="copyPrompt()" class="absolute bottom-2 right-2 px-3 py-1.5 text-xs bg-brand-500 hover:bg-brand-600 active:scale-95 text-white font-semibold rounded-lg shadow-lg shadow-brand-500/10 transition flex items-center space-x-1.5">
+                                <i class="far fa-copy"></i>
+                                <span>複製 Prompt</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive 180-Minute Timeline -->
+        <section id="timeline" class="space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-extrabold flex items-center justify-center space-x-3">
+                    <i class="far fa-calendar-alt text-brand-400"></i>
+                    <span>三小時精確進度 • 課程地圖</span>
+                </h2>
+                <p class="text-slate-400 text-sm">點擊任一階段，即可查看課堂上的 AI 驅動任務細節、老師的嚴厲引導重點與交付標準：</p>
+            </div>
+
+            <!-- Timeline Stack -->
+            <div class="space-y-4 max-w-5xl mx-auto">
+                
+                <!-- Stage 1 -->
+                <div class="group border border-white/10 rounded-2xl bg-brand-cardBg/60 overflow-hidden transition-all duration-300 hover:border-brand-500/50">
+                    <button onclick="toggleTimeline(1)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center space-x-4">
+                            <span class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-400 border border-brand-500/30 flex items-center justify-center font-bold text-sm">P1</span>
+                            <div>
+                                <span class="text-xs text-brand-400 font-semibold tracking-wider">00 - 40 MIN (40分鐘)</span>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-200">第一階段：建構大腦 —— 破冰與 O2O 漏斗拆解</h3>
+                            </div>
+                        </div>
+                        <i id="arrow-1" class="fas fa-chevron-down text-slate-500 group-hover:text-slate-300 transition-transform duration-300"></i>
+                    </button>
+                    <div id="content-1" class="hidden border-t border-white/5 bg-brand-cardBg/30 p-5 sm:p-6 space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="space-y-2">
+                                <h4 class="text-xs font-semibold text-brand-400 uppercase tracking-wider"><i class="fas fa-chess-queen mr-2"></i>課堂即時活動內容</h4>
+                                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                    <strong>殘酷案例對比 (Showcase)：</strong> 老師投影展示兩張快閃店照片：一張是「傳統發傳單型，門可羅雀」，另一張是「爆紅體驗型，大排長龍並在 IG 瘋狂打卡」。
+                                    現場講解 Amazon 逆向工作法，導入 IMC 全通路整合閉環概念，拆解實體快閃店的標準五大預算結構。
+                                </p>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="text-xs font-semibold text-brand-accent uppercase tracking-wider"><i class="fas fa-comments-dollar mr-2"></i>智者導師引導話術</h4>
+                                <p class="text-xs sm:text-sm text-slate-300 italic leading-relaxed font-light">
+                                    「傳統的 4P 把通路寫在課本上，但現在的 O2O 是『場景革命』。如果你們的快閃店只是把產品排排站放在桌上發傳單，那我一定不會給你們預算。
+                                    我們要學的是，如何用一個讓人無法抗拒的線下五感體驗，去拉動線上的病毒傳播漏斗！」
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 2 -->
+                <div class="group border border-white/10 rounded-2xl bg-brand-cardBg/60 overflow-hidden transition-all duration-300 hover:border-brand-500/50">
+                    <button onclick="toggleTimeline(2)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center space-x-4">
+                            <span class="w-10 h-10 rounded-xl bg-brand-accent/10 text-brand-accent border border-brand-accent/30 flex items-center justify-center font-bold text-sm">P2</span>
+                            <div>
+                                <span class="text-xs text-brand-accent font-semibold tracking-wider">40 - 90 MIN (50分鐘)</span>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-200">第二階段：發散與收斂 —— 結合創業主題的場景設計</h3>
+                            </div>
+                        </div>
+                        <i id="arrow-2" class="fas fa-chevron-down text-slate-500 group-hover:text-slate-300 transition-transform duration-300"></i>
+                    </button>
+                    <div id="content-2" class="hidden border-t border-white/5 bg-brand-cardBg/30 p-5 sm:p-6 space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="space-y-2">
+                                <h4 class="text-xs font-semibold text-brand-400 uppercase tracking-wider"><i class="fas fa-chess-queen mr-2"></i>課堂即時活動內容</h4>
+                                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                    <strong>AI 協作：O2O 企劃與動線發想（使用 Gemini）：</strong> 學生根據各組既定主題，啟動專屬 AI 提示詞進行體驗設計爆發。
+                                    <strong>實作閉環圖：</strong> 小組需在白板或數位工具上，畫出消費者完整的「線上引流 $\rightarrow$ 線下體驗 $\rightarrow$ 線上高機率轉化」路徑。
+                                </p>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="text-xs font-semibold text-brand-accent uppercase tracking-wider"><i class="fas fa-comments-dollar mr-2"></i>智者導師引導話術</h4>
+                                <p class="text-xs sm:text-sm text-slate-300 italic leading-relaxed font-light">
+                                    「注意看你們的漏斗！消費者在駁二特區排隊進來，體驗了 3 分鐘，然後開心地離開了。你們有留下他任何資訊嗎？他有加入會員或掃碼加購物車嗎？
+                                    如果消費者玩完就拍拍屁股走了，這不叫 O2O，這叫慈善活動。把轉換點找出來，現在重做！」
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 3 -->
+                <div class="group border border-white/10 rounded-2xl bg-brand-cardBg/60 overflow-hidden transition-all duration-300 hover:border-brand-500/50">
+                    <button onclick="toggleTimeline(3)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center space-x-4">
+                            <span class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 flex items-center justify-center font-bold text-sm">P3</span>
+                            <div>
+                                <span class="text-xs text-cyan-400 font-semibold tracking-wider">90 - 140 MIN (50分鐘)</span>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-200">第三階段：產出與計算 —— 數據煉金術與效益模擬</h3>
+                            </div>
+                        </div>
+                        <i id="arrow-3" class="fas fa-chevron-down text-slate-500 group-hover:text-slate-300 transition-transform duration-300"></i>
+                    </button>
+                    <div id="content-3" class="hidden border-t border-white/5 bg-brand-cardBg/30 p-5 sm:p-6 space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="space-y-2">
+                                <h4 class="text-xs font-semibold text-brand-400 uppercase tracking-wider"><i class="fas fa-chess-queen mr-2"></i>課堂即時活動內容</h4>
+                                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                    <strong>數據財務模擬（使用 NotebookLM）：</strong> 學生將企劃草案與數據設定導入 NotebookLM，扮演「毒舌財務總監」來挑出邏輯漏洞與過度樂觀的數字。
+                                    <strong>整理提示詞日誌 (Prompt Log)：</strong> 記錄人機辯證的優化過程。
+                                </p>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="text-xs font-semibold text-brand-accent uppercase tracking-wider"><i class="fas fa-comments-dollar mr-2"></i>智者導師引導話術</h4>
+                                <p class="text-xs sm:text-sm text-slate-300 italic leading-relaxed font-light">
+                                    「這就是人機協作最精妙的時刻：Meta-thinking（後設思考）。當 AI 質疑你們兩天 5 萬預算能獲得 10,000 人流太過荒謬時，不要氣餒！
+                                    這是一面鏡子，照出你們對線下實體店人流極限的不了解。把 AI 挑出的漏洞和你們的修正過程記錄下來，那才是你們這堂課最大的收穫。」
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 4 -->
+                <div class="group border border-white/10 rounded-2xl bg-brand-cardBg/60 overflow-hidden transition-all duration-300 hover:border-brand-500/50">
+                    <button onclick="toggleTimeline(4)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center space-x-4">
+                            <span class="w-10 h-10 rounded-xl bg-green-500/10 text-green-400 border border-green-500/30 flex items-center justify-center font-bold text-sm">P4</span>
+                            <div>
+                                <span class="text-xs text-green-400 font-semibold tracking-wider">140 - 180 MIN (40分鐘)</span>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-200">第四階段：審判 —— Demo Day 快閃路演</h3>
+                            </div>
+                        </div>
+                        <i id="arrow-4" class="fas fa-chevron-down text-slate-500 group-hover:text-slate-300 transition-transform duration-300"></i>
+                    </button>
+                    <div id="content-4" class="hidden border-t border-white/5 bg-brand-cardBg/30 p-5 sm:p-6 space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="space-y-2">
+                                <h4 class="text-xs font-semibold text-brand-400 uppercase tracking-wider"><i class="fas fa-chess-queen mr-2"></i>課堂即時活動內容</h4>
+                                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                    <strong>2分鐘閃電簡報 (Pitch)：</strong> 每組派出代表上台簡報 120 秒，展示產品 3D 視覺示意與 O2O 財務漏斗預測。
+                                    <strong>全班同儕盲選投票：</strong> 運用 Rubric 進行現場決策考核，選出本日「最佳快閃店企劃案」。
+                                </p>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="text-xs font-semibold text-brand-accent uppercase tracking-wider"><i class="fas fa-comments-dollar mr-2"></i>智者導師引導話術</h4>
+                                <p class="text-xs sm:text-sm text-slate-300 italic leading-relaxed font-light">
+                                    「這兩天預估路過有 5,000 人，你們說進店率 30%，客單價 350 元。你們憑什麼認為這 1,500 人會願意在駁二現場為你們掏出皮夾？
+                                    你們的『痛點止痛藥』夠利嗎？這份簡報在真實創投面前不及格，但沒關係，我要看你們如何根據同儕的回饋在最後企劃書中進行修正！」
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Interactive O2O Conversion Funnel & ROI Simulator -->
+        <section id="simulator" class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-brand-cardBg to-brand-cardBg/40 border border-brand-500/20 space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-extrabold flex items-center justify-center space-x-3">
+                    <i class="fas fa-calculator text-brand-400 animate-pulse"></i>
+                    <span>O2O 轉換漏斗與 ROI 模擬器</span>
+                </h2>
+                <p class="text-slate-400 text-sm">
+                    這是專為本週設計的預測計算工具。在把數據餵給 AI 前，先在這裡動態調整各階段轉換率，感受 O2O 漏斗乘數效應的殘酷現實！
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+                
+                <!-- Left: Slider Inputs -->
+                <div class="lg:col-span-6 space-y-6 bg-brand-darkBg/60 p-5 sm:p-6 rounded-2xl border border-white/5">
+                    <h3 class="text-base font-bold text-slate-200 border-b border-white/5 pb-3 flex items-center justify-between">
+                        <span><i class="fas fa-sliders-h text-brand-400 mr-2"></i>漏斗參數設定</span>
+                        <span class="text-xs text-brand-400">請拉動數值</span>
+                    </h3>
+                    
+                    <!-- Slider 1 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs font-semibold">
+                            <span class="text-slate-300">駁二特區路過總人流 (2天)</span>
+                            <span class="text-brand-400 font-mono" id="val-traffic">5,000 人</span>
+                        </div>
+                        <input type="range" id="input-traffic" min="1000" max="20000" step="500" value="5000" oninput="calculateROI()" class="w-full h-1.5 bg-brand-cardBg rounded-lg appearance-none cursor-pointer accent-brand-500">
+                    </div>
+
+                    <!-- Slider 2 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs font-semibold">
+                            <span class="text-slate-300">路過進店率 (Booth Stop Rate)</span>
+                            <span class="text-brand-400 font-mono" id="val-stop">15 %</span>
+                        </div>
+                        <input type="range" id="input-stop" min="1" max="50" step="1" value="15" oninput="calculateROI()" class="w-full h-1.5 bg-brand-cardBg rounded-lg appearance-none cursor-pointer accent-brand-500">
+                    </div>
+
+                    <!-- Slider 3 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs font-semibold">
+                            <span class="text-slate-300">互動體驗參與率 (Engage Rate)</span>
+                            <span class="text-brand-400 font-mono" id="val-engage">60 %</span>
+                        </div>
+                        <input type="range" id="input-engage" min="10" max="95" step="5" value="60" oninput="calculateROI()" class="w-full h-1.5 bg-brand-cardBg rounded-lg appearance-none cursor-pointer accent-brand-500">
+                    </div>
+
+                    <!-- Slider 4 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs font-semibold">
+                            <span class="text-slate-300">掃碼轉換購買率 (Purchase Rate)</span>
+                            <span class="text-brand-400 font-mono" id="val-purchase">8 %</span>
+                        </div>
+                        <input type="range" id="input-purchase" min="1" max="30" step="1" value="8" oninput="calculateROI()" class="w-full h-1.5 bg-brand-cardBg rounded-lg appearance-none cursor-pointer accent-brand-500">
+                    </div>
+
+                    <!-- Slider 5 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs font-semibold">
+                            <span class="text-slate-300">商品平均單價 (AOV)</span>
+                            <span class="text-brand-400 font-mono" id="val-aov">NT$ 350</span>
+                        </div>
+                        <input type="range" id="input-aov" min="100" max="2000" step="50" value="350" oninput="calculateROI()" class="w-full h-1.5 bg-brand-cardBg rounded-lg appearance-none cursor-pointer accent-brand-500">
+                    </div>
+
+                    <!-- Slider 6 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs font-semibold">
+                            <span class="text-slate-300">快閃活動總支出預算</span>
+                            <span class="text-brand-400 font-mono" id="val-budget">NT$ 50,000</span>
+                        </div>
+                        <input type="range" id="input-budget" min="10000" max="150000" step="5000" value="50000" oninput="calculateROI()" class="w-full h-1.5 bg-brand-cardBg rounded-lg appearance-none cursor-pointer accent-brand-500">
+                    </div>
+                </div>
+
+                <!-- Right: Visualization of Funnel and calculations -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="bg-gradient-to-br from-indigo-950/50 to-purple-950/20 p-5 sm:p-6 rounded-2xl border border-brand-500/20 space-y-6">
+                        <h3 class="text-base font-bold text-slate-200 border-b border-white/5 pb-3">
+                            <i class="fas fa-chart-line text-brand-accent mr-2"></i>O2O 數據漏斗與效益預估
+                        </h3>
+                        
+                        <!-- Dynamic Funnel Visualizer -->
+                        <div class="space-y-4 font-mono">
+                            <!-- Step 1 -->
+                            <div class="space-y-1">
+                                <div class="flex justify-between text-[11px] text-slate-400">
+                                    <span>[階段 1] 外部曝光人流</span>
+                                    <span id="show-traffic">5,000 人</span>
+                                </div>
+                                <div class="w-full bg-brand-darkBg h-4 rounded-md overflow-hidden relative border border-white/5">
+                                    <div class="bg-gradient-to-r from-brand-600 to-brand-500 h-full w-full transition-all duration-300"></div>
+                                </div>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div class="space-y-1">
+                                <div class="flex justify-between text-[11px] text-slate-400">
+                                    <span>[階段 2] 快閃進店人流</span>
+                                    <span id="show-stop">750 人</span>
+                                </div>
+                                <div class="w-full bg-brand-darkBg h-4 rounded-md overflow-hidden relative border border-white/5">
+                                    <div id="bar-stop" class="bg-gradient-to-r from-brand-500 to-indigo-500 h-full transition-all duration-300" style="width: 15%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div class="space-y-1">
+                                <div class="flex justify-between text-[11px] text-slate-400">
+                                    <span>[階段 3] 參與體驗人數</span>
+                                    <span id="show-engage">450 人</span>
+                                </div>
+                                <div class="w-full bg-brand-darkBg h-4 rounded-md overflow-hidden relative border border-white/5">
+                                    <div id="bar-engage" class="bg-gradient-to-r from-indigo-500 to-brand-accent h-full transition-all duration-300" style="width: 9%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Step 4 -->
+                            <div class="space-y-1">
+                                <div class="flex justify-between text-[11px] text-slate-400">
+                                    <span>[階段 4] 成功轉化成交件數</span>
+                                    <span id="show-purchase" class="text-brand-accent font-bold">36 件</span>
+                                </div>
+                                <div class="w-full bg-brand-darkBg h-4 rounded-md overflow-hidden relative border border-white/5">
+                                    <div id="bar-purchase" class="bg-gradient-to-r from-brand-accent to-pink-500 h-full transition-all duration-300" style="width: 0.72%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ROI Results Widget -->
+                        <div class="grid grid-cols-2 gap-4 pt-4 border-t border-white/5">
+                            <div class="bg-brand-darkBg/60 p-4 rounded-xl border border-white/5">
+                                <p class="text-[10px] text-slate-400 font-semibold tracking-wider">預估總營業額</p>
+                                <p class="text-lg sm:text-2xl font-black text-slate-100 mt-1 font-mono" id="result-revenue">NT$ 12,600</p>
+                            </div>
+                            <div class="bg-brand-darkBg/60 p-4 rounded-xl border border-white/5" id="roi-container">
+                                <p class="text-[10px] text-slate-400 font-semibold tracking-wider">投資報酬率 (ROI)</p>
+                                <p class="text-lg sm:text-2xl font-black text-red-400 mt-1 font-mono" id="result-roi">-74.80 %</p>
+                            </div>
+                        </div>
+                        
+                        <div class="p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20 text-[11px] text-yellow-300 leading-relaxed" id="simulator-feedback">
+                            ⚠️ <strong>財務總監毒舌警告：</strong>目前 ROI 為負值！這代表你們的活動支出大於營收。試著提升「進店率」或調高「商品單價」來達成損益兩平，否則這份企劃將在課堂上被投資人無情退件。
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- AI Tools Hub -->
+        <section id="ai-tools" class="space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-extrabold flex items-center justify-center space-x-3">
+                    <i class="fas fa-robot text-brand-400"></i>
+                    <span>AI 數位行銷副手導航</span>
+                </h2>
+                <p class="text-slate-400 text-sm">本週我們要求各組將 AI 視為專業副手 (Co-pilot)，以下為本週必備的 AI 工具與操作指南：</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Tool 1 -->
+                <div class="p-6 rounded-3xl bg-brand-cardBg border border-white/10 hover:border-brand-500/30 transition-all flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-lg font-bold">G</div>
+                        <h3 class="text-lg font-bold text-slate-200">Google Gemini</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            <strong>定位：</strong>創意與策略生成引擎。<br />
+                            <strong>本週應用：</strong>用於快閃活動主題發想、五感互動體驗設計、與線上轉線下 AIDA 行銷文案。協助團隊撰寫最初始的活動動線藍圖。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/5">
+                        <span class="text-[10px] font-semibold text-brand-400 tracking-wider block uppercase mb-1">基本操作指南</span>
+                        <p class="text-[11px] text-slate-500">請設定「角色扮演背景」，餵入你們組別的主題與預期目標，再利用疊代對話（Prompting）逐步收斂出最真實的場景設計。</p>
+                    </div>
+                </div>
+
+                <!-- Tool 2 -->
+                <div class="p-6 rounded-3xl bg-brand-cardBg border border-white/10 hover:border-brand-500/30 transition-all flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg font-bold">N</div>
+                        <h3 class="text-lg font-bold text-slate-200">NotebookLM</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            <strong>定位：</strong>資料洞察與財務合理性驗證。<br />
+                            <strong>本週應用：</strong>匯入你們的企劃草案、預估數據，讓 NotebookLM 扮演創投或財務長。對你們預估的轉化率進行毒舌批判，優化預算分配與客單設定。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/5">
+                        <span class="text-[10px] font-semibold text-brand-accent tracking-wider block uppercase mb-1">基本操作指南</span>
+                        <p class="text-[11px] text-slate-500">上傳本組「快閃活動一頁企劃」至來源，使用「設定財務總監視角」的 Prompt，迫使 AI 幫你們找出不合理的財務設定與體驗盲點。</p>
+                    </div>
+                </div>
+
+                <!-- Tool 3 -->
+                <div class="p-6 rounded-3xl bg-brand-cardBg border border-white/10 hover:border-brand-500/30 transition-all flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="w-10 h-10 rounded-xl bg-green-500/10 text-green-400 flex items-center justify-center text-lg font-bold">NB</div>
+                        <h3 class="text-lg font-bold text-slate-200">Nano Banana / Gamma</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            <strong>定位：</strong>視覺原型與網頁架設工具。<br />
+                            <strong>本週應用：</strong>快速生成快閃店的 3D 體驗空間、實體產品包裝，或製作活動專用的 Landing Page (RWD 響應式網頁)，供簡報時具體呈現給投資人。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/5">
+                        <span class="text-[10px] font-semibold text-green-400 tracking-wider block uppercase mb-1">基本操作指南</span>
+                        <p class="text-[11px] text-slate-500">利用 AI 輔助生成 10 秒內高品質視覺概念圖。讓團隊在不需要任何網頁程式碼基礎下，能在課堂上即時完成 Landing Page 網頁概念原型。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global AI Prompt Center -->
+            <div class="p-6 rounded-3xl bg-brand-cardBg/90 border border-brand-500/20 space-y-6">
+                <h3 class="text-lg font-bold text-slate-200 flex items-center space-x-2">
+                    <i class="fas fa-terminal text-brand-accent"></i>
+                    <span>通用 AI 財務校正提示詞 (NotebookLM 專用)</span>
+                </h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    在你們把預算表與轉化漏斗定案前，必須將此段提示詞餵給 <strong>NotebookLM</strong>。它能徹底幫你們找出企劃中的「自我感覺良好」數據漏洞：
+                </p>
+                <div class="relative group">
+                    <textarea id="global-finance-prompt" readonly class="w-full h-32 p-3 text-xs font-mono bg-brand-darkBg text-slate-300 rounded-xl border border-white/10 focus:outline-none resize-none">【請扮演毒舌但極其專業的零售通路財務顧問】
+這是我們第十三週的 O2O 快閃活動企劃案草稿。我們預備在駁二特區舉辦兩天活動，預算為 5 萬元，主打產品單價為 [在此輸入商品單價]。
+我們目前對漏斗預估的數據如下：
+- 路過總人流：[填寫人流]
+- 預估進店率 (Booth Stop Rate)：[填寫% ]
+- 體驗參與率 (Engage Rate)：[填寫% ]
+- 體驗後線上掃碼購買率 (Purchase Rate)：[填寫% ]
+
+請依據台灣實體快閃店的真實市場現況，回答：
+1. 以上哪一項數據指標過於樂觀？請無情指出其不合理之處。
+2. 為了確保我們不賠錢（達成損益兩平），在維持 5 萬元支出的情況下，我們應該優先優化哪一個漏斗環節，或者我們需要將客單價調整至多少？請提供最精準的數值分析與調整策略。</textarea>
+                    <button onclick="copyGlobalPrompt()" class="absolute bottom-2 right-2 px-3 py-1.5 text-xs bg-brand-accent hover:bg-brand-accent/80 active:scale-95 text-white font-semibold rounded-lg shadow-lg shadow-brand-500/10 transition flex items-center space-x-1.5">
+                        <i class="far fa-copy"></i>
+                        <span>複製財務 Prompt</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deliverables and Rubrics -->
+        <section id="deliverables" class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
+            
+            <!-- Left: Deliverables -->
+            <div class="lg:col-span-6 p-6 sm:p-8 rounded-3xl bg-brand-cardBg/90 border border-white/10 flex flex-col justify-between space-y-6">
+                <div class="space-y-4">
+                    <h3 class="text-xl sm:text-2xl font-bold flex items-center space-x-3">
+                        <i class="fas fa-file-invoice text-brand-400"></i>
+                        <span>交付作業定義 (Deliverables)</span>
+                    </h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">本週結束後，各組需於下週上課前將作品上傳至課程平台。交付物將作為 Sprint 3 核心實戰評量。</p>
+                    
+                    <ul class="space-y-3 pt-2">
+                        <li class="flex items-start space-x-3">
+                            <span class="w-5 h-5 rounded-md bg-brand-500/20 text-brand-400 flex items-center justify-center text-xs mt-0.5"><i class="fas fa-check"></i></span>
+                            <div>
+                                <h4 class="text-sm font-semibold text-slate-200">1. O2O 快閃活動一頁企劃書</h4>
+                                <p class="text-xs text-slate-400">包含活動核心口號、實體 5 感體驗設計、以及線上線下引流閉環路徑圖。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="w-5 h-5 rounded-md bg-brand-500/20 text-brand-400 flex items-center justify-center text-xs mt-0.5"><i class="fas fa-check"></i></span>
+                            <div>
+                                <h4 class="text-sm font-semibold text-slate-200">2. 財務轉換漏斗預算表</h4>
+                                <p class="text-xs text-slate-400">列出 50,000 元預算之合理分配，並精準推導出預估 ROI 與損益兩平點。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="w-5 h-5 rounded-md bg-brand-accent/20 text-brand-accent flex items-center justify-center text-xs mt-0.5 font-bold">★</span>
+                            <div>
+                                <h4 class="text-sm font-semibold text-brand-accent">3. Prompt History Log (提示詞歷程日誌)</h4>
+                                <p class="text-xs text-slate-400">截圖或複製至少 2 個最失敗的 AI 財務回饋，詳細紀錄團隊如何進行「後設思考 (Meta-Thinking)」與重新下指令修正數據的過程。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="p-3.5 rounded-xl bg-brand-darkBg/60 border border-white/5 flex items-center space-x-3">
+                    <i class="fas fa-calendar-day text-brand-accent"></i>
+                    <p class="text-xs text-slate-400"><strong>繳交期限：</strong>下週上課前（週二 18:00 截止，逾期不候）</p>
+                </div>
+            </div>
+
+            <!-- Right: Grading Rubrics -->
+            <div class="lg:col-span-6 p-6 sm:p-8 rounded-3xl bg-brand-cardBg/90 border border-white/10 space-y-6">
+                <h3 class="text-xl sm:text-2xl font-bold flex items-center space-x-3">
+                    <i class="fas fa-chart-bar text-brand-accent"></i>
+                    <span>評量尺規 (Grading Rubrics)</span>
+                </h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    在我的課堂中，評分絕對不是看「活動看起來好不好玩」，而是看你們是否具備行銷管理者的核心戰略邏輯與馴服 AI 的後設思維：
+                </p>
+
+                <!-- Rubric Items Accordion -->
+                <div class="space-y-3">
+                    
+                    <div onclick="toggleRubric(1)" class="p-3 rounded-xl bg-brand-darkBg/60 border border-white/5 cursor-pointer transition hover:border-brand-500/20">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-slate-200">全通路一致性 (IMC Alignment) - 30%</span>
+                            <span class="text-[10px] text-brand-400">點擊查看標準</span>
+                        </div>
+                        <p id="rubric-1" class="hidden text-[11px] text-slate-400 mt-2 leading-relaxed">
+                            <strong>1-2分：</strong>線上到線下邏輯破碎，消費者玩完即走，沒有留下任何數位足跡。<br/>
+                            <strong>3-4分：</strong>有明確的 O2O 連接，但體驗與品牌定位不一致。<br/>
+                            <strong>5分：</strong>完美契合！線下五感體驗強烈，線上折扣與二次社群裂變機制流暢，展現高度品牌一致性。
+                        </p>
+                    </div>
+
+                    <div onclick="toggleRubric(2)" class="p-3 rounded-xl bg-brand-darkBg/60 border border-white/5 cursor-pointer transition hover:border-brand-500/20">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-slate-200">財務與邏輯可行性 (Feasibility) - 40%</span>
+                            <span class="text-[10px] text-brand-400">點擊查看標準</span>
+                        </div>
+                        <p id="rubric-2" class="hidden text-[11px] text-slate-400 mt-2 leading-relaxed">
+                            <strong>1-2分：</strong>漏斗數據嚴重偏離現實市場，無合理依據，財務估算純屬自嗨。<br/>
+                            <strong>3-4分：</strong>數據架構完整，但面對實體人流限制的預期過於理想。<br/>
+                            <strong>5分：</strong>數據極具說服力！各節點轉化率有文獻或產業數據支持，預算結構合理，完美說服創投。
+                        </p>
+                    </div>
+
+                    <div onclick="toggleRubric(3)" class="p-3 rounded-xl bg-brand-darkBg/60 border border-white/5 cursor-pointer transition hover:border-brand-500/20">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-slate-200">在地場域融入 (Contextual Fit) - 20%</span>
+                            <span class="text-[10px] text-brand-400">點擊查看標準</span>
+                        </div>
+                        <p id="rubric-3" class="hidden text-[11px] text-slate-400 mt-2 leading-relaxed">
+                            <strong>1-2分：</strong>快閃店方案套用在任何地方都成立，毫無高雄在地或駁二特區的文化特性。<br/>
+                            <strong>3-4分：</strong>提及了駁二的人流，但對其空間的使用缺乏創意。<br/>
+                            <strong>5分：</strong>完美融合駁二空間、美學和目標客群（如文青、親子）心理，將在地地理特色發揮淋漓。
+                        </p>
+                    </div>
+
+                    <div onclick="toggleRubric(4)" class="p-3 rounded-xl bg-brand-darkBg/60 border border-white/5 cursor-pointer transition hover:border-brand-500/20">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-brand-accent">人機協作力與後設思考 (AI Ops) - 10%</span>
+                            <span class="text-[10px] text-brand-accent font-semibold">核心項目</span>
+                        </div>
+                        <p id="rubric-4" class="hidden text-[11px] text-slate-400 mt-2 leading-relaxed">
+                            <strong>1-2分：</strong>直接複製貼上 AI 的初稿，被抓包毫無任何修改與邏輯優化痕跡。<br/>
+                            <strong>3-4分：</strong>有簡單紀錄與 AI 的對話，但無明顯的辯證與批判。<br/>
+                            <strong>5分：</strong>精彩絕倫！Prompt Log 清晰展示了「被 AI 駁斥 $\rightarrow$ 團隊反思並調研真實數據 $\rightarrow$ 下達更精準結構化指令修正」的高級人機協作思維。
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 18 Weeks Syllabus Brief Modal -->
+    <div id="syllabus-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Overlay background -->
+            <div onclick="toggleSyllabusModal()" class="fixed inset-0 transition-opacity bg-black bg-opacity-75" aria-hidden="true"></div>
+            
+            <!-- Modal Box -->
+            <div class="inline-block align-bottom bg-brand-cardBg text-left rounded-3xl overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full border border-white/10 relative">
+                <div class="p-6 sm:p-8 space-y-6">
+                    <div class="flex justify-between items-center border-b border-white/5 pb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h3 class="text-lg font-bold">《行銷管理研究》18週 四階段創業衝刺大綱</h3>
+                        </div>
+                        <button onclick="toggleSyllabusModal()" class="text-slate-500 hover:text-white transition">
+                            <i class="fas fa-times text-lg"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <!-- Sprint 1 -->
+                        <div class="p-4 rounded-xl bg-brand-darkBg/60 border border-brand-500/10 space-y-2">
+                            <span class="text-[10px] font-bold text-brand-400 uppercase tracking-wider">Sprint 1 (W1-W5)</span>
+                            <h4 class="text-sm font-bold text-slate-200">概念驗證 POC</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">從「逆向新聞稿」出發，鎖定黃金 Persona 進行生存海選戰，並經由創投提案證明市場存在。</p>
+                        </div>
+                        
+                        <!-- Sprint 2 -->
+                        <div class="p-4 rounded-xl bg-brand-darkBg/60 border border-brand-accent/10 space-y-2">
+                            <span class="text-[10px] font-bold text-brand-accent uppercase tracking-wider">Sprint 2 (W6-W10)</span>
+                            <h4 class="text-sm font-bold text-slate-200">產品具象化 MVP</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">利用 AI 生成產品實體原型包裝與品牌故事，進行心理定價，最終利用 Gamma 網頁一線落地。</p>
+                        </div>
+
+                        <!-- Sprint 3 -->
+                        <div class="p-4 rounded-xl bg-brand-darkBg/60 border-brand-500/10 border-2 space-y-2 relative">
+                            <span class="absolute -top-2 right-2 px-1.5 py-0.5 bg-brand-500 text-white text-[8px] font-bold rounded">當前階段</span>
+                            <span class="text-[10px] font-bold text-brand-400 uppercase tracking-wider">Sprint 3 (W11-W14)</span>
+                            <h4 class="text-sm font-bold text-slate-200">流量與轉換 Traction</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">內容與病毒行銷雙軌並進，本週實施 O2O 全通路快閃店戰役，並執行 A/B 測試投放預測。</p>
+                        </div>
+
+                        <!-- Sprint 4 -->
+                        <div class="p-4 rounded-xl bg-brand-darkBg/60 border border-green-500/10 space-y-2">
+                            <span class="text-[10px] font-bold text-green-400 uppercase tracking-wider">Sprint 4 (W15-W18)</span>
+                            <h4 class="text-sm font-bold text-slate-200">優化與擴張 Scale</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">公關危機公關處置、CRM 終身價值鎖定，最終迎來 Demo Day 接受業界真實投資人洗禮審判。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 rounded-2xl bg-indigo-950/20 border border-brand-500/10 flex flex-col sm:flex-row items-center sm:justify-between gap-4">
+                        <div class="space-y-1 text-center sm:text-left">
+                            <h4 class="text-sm font-bold">欲詳閱完整的教學大綱及理論依據？</h4>
+                            <p class="text-xs text-slate-400">本課程突破傳統線性結構，採用 Gabriel Petersson 的 Top-Down 逆向教學模式與 Meta-Thinking 協作模型。</p>
+                        </div>
+                        <a href="#" class="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-xs text-white font-bold rounded-xl transition shadow-lg shadow-brand-500/10 shrink-0">
+                            下載教學大綱.PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-12 text-center text-xs text-slate-500 space-y-3 relative z-10">
+        <p>© 2026 行銷管理研究 傅振瑞教授 課程教學網站. All Rights Reserved.</p>
+        <p>本學期課程合作場域：高雄駁二藝術特區 • AI 技術賦能：Google Workspace & Gemini API 課堂專案</p>
+    </footer>
+
+    <!-- Scripts for Interaction -->
+    <script>
+        // Group Theme Scenarios Data Source
+        const themeData = {
+            clean: {
+                title: "極簡白科技洗滌體驗艙",
+                badge: "淨亮清潔清潔劑組",
+                watermark: "CLEAN",
+                experience: "現場打造如極簡實驗室般的超白美學洗滌艙，不主動推銷，而是邀請消費者攜帶一件「最心愛但有頑固污漬」的衣物前來，利用 AI 污漬診斷儀和淨亮洗劑現場進行 15 分鐘超淨化洗滌體驗。現場展示「奇蹟除垢」的驚人瞬間。",
+                loop: "【線上】發起「#尋找高雄最髒的衣領」社群挑戰賽，預約免費現場極速洗劑SPA；【線下】現場體驗洗滌前後對比，並在 3D 質感發光櫥窗前與「復活的衣物」拍照打卡，獲得線下專屬 QR Code 折扣碼；【轉化】掃碼後直達線上官網訂購，且下單即隨機贈送旅行試用包，引發社群二次開箱裂變。",
+                prompt: "請扮演資深零售通路行銷總監。我們的主題是「淨亮清潔清潔劑」，預計在駁二特區舉辦一場 O2O 快閃活動。請幫我們規劃：\n1. 3 個能激發消費者好奇心、將其從線上引流至現場的「獵奇性實體體驗」點子。\n2. 針對「現場體驗後，如何引導消費者高機率掃碼轉入線上官方商城購買」設計一組極具誘惑力的通路促銷機制。\n3. 預估這場活動的「路過進店率」與「線下轉線上購買率」的合理區間，並說明理由。"
+            },
+            space: {
+                title: "1x1 坪崩潰空間與治癒重生室",
+                badge: "空間智癒室內斷捨離組",
+                watermark: "SPACE",
+                experience: "現場打造一座外觀雜亂壓抑的「崩潰迷宮貨櫃」，參觀者走過象徵心中焦慮的混亂過道，在出口端跨入極具療癒、通透感的「斷捨離治癒茶室」。利用精油、聲音和視覺強烈對比，展示空間改造心靈的魔力。",
+                loop: "【線上】舉辦「#秀出你家最亂的一角」照片募集，提供線上斷捨離性格測驗；【線下】現場體驗驚人的視覺情緒差，提供限量的「治癒系植物種子」並印有專用 QR code 的諮詢小卡；【轉化】消費者掃碼可直接享有「首小時免諮詢費」的預約諮詢服務，線上預約轉化率翻倍。",
+                prompt: "請扮演資深零售通路行銷總監。我們的主題是「空間智癒室內雜物斷捨離」，預計在駁二特區舉辦一場 O2O 快閃活動。請幫我們規劃：\n1. 如何在現場打造出「最能激發拍照打卡、主動分享」的「極度焦慮混亂 vs 極度治癒簡約」對比拍照點？\n2. 設計一個極具趣味性的「現場互動檢測測驗」，引導消費者認知自己家裡的「雜亂痛點」，並高效率引流到線上預約服務。\n3. 如何透過 NotebookLM 幫我們估算這個快閃店的 ROI？"
+            },
+            protein: {
+                title: "1分鐘肌力大挑戰 & 綠色植物蛋白吧",
+                badge: "青春好肌動素食補充蛋白質組",
+                watermark: "PROTEIN",
+                experience: "設立一座「極速能量綠能艙」，現場提供酷炫的體能互動遊戲（如一分鐘划船機大賽或極速踩腳踏車），完成挑戰後，現場有 AI 機械臂或專人為你依據體測數據調配專屬口感的植物蛋白質果汁飲，健康又時尚。",
+                loop: "【線上】與運動網紅合作發起「#肌力抗老一分鐘」挑戰，現場提供領取免費植物蛋白特調的限量預約券；【線下】到場體驗極速體測，運動完立刻喝到專屬植物蛋白，並邀請在「好肌動發光背景牆」拍照上傳；【轉化】上傳社群者即可掃碼獲得官網首購 79 折並加贈便攜搖搖杯，牢牢鎖定運動族群回購。",
+                prompt: "請扮演資深零售通路行銷總監。我們的主題是「青春好肌動素食補充蛋白質」，預計在駁二特區舉辦一場 O2O 快閃活動。請幫我們規劃：\n1. 如何在快閃現場設計兼具「趣味、高參與度、且完全展示產品特色」的 1 分鐘體能挑戰？\n2. 我們該如何設計「現場贈飲與購買誘因」的轉化機制，好讓喝過植物蛋白特調的消費者，現場用手機立刻在線上官方商城下單？\n3. 請幫我們合理分析快閃活動提袋率與顧客終身價值 (LTV) 之間的關係。"
+            },
+            coffee: {
+                title: "智慧AI情緒情緒解毒咖啡館",
+                badge: "行動智慧咖啡組",
+                watermark: "COFFEE",
+                experience: "將快閃店設計為「黑白色調的情緒交易所」，消費者現場掃描 iPad 或使用手機回答 5 個由 AI 生成的當前情緒與狀態測驗，機器隨即透過雲端為其配製一杯「專屬處方情緒咖啡」，杯套印有客製化 AI 情緒解毒金句。",
+                loop: "【線上】透過社群分享「線上情緒測驗」生成專屬處方籤，吸引文青前來尋求「解毒」；【線下】現場兌換或付費取得專屬情緒咖啡，掃描杯套 QR Code 還可解鎖專屬的「AI 行動智慧咖啡訂閱包」；【轉化】用戶掃描後可一鍵開通「週週送智慧冷泡豆」訂閱服務，成功將快閃店轉化為訂閱制商機。",
+                prompt: "請扮演資深零售通路行銷總監。我們的主題是「行動智慧咖啡」，預計在駁二特區舉辦一場 O2O 快閃活動。請幫我們規劃：\n1. 如何利用「AI 情緒測驗與調配專屬咖啡」的流程，來為消費者創造極致的實體驚喜感 (Delight)？\n2. 面對咖啡市場激烈的競爭，快閃店要如何引導消費者直接「訂閱」我們線上每週配送的智慧咖啡豆，而非只是一次性消費？\n3. 請幫忙設計快閃咖啡店的成本利潤表架構。"
+            },
+            hair: {
+                title: "微觀毛囊未來診斷與精油SPA館",
+                badge: "奇蹟生髮梳組",
+                watermark: "HAIR",
+                experience: "現場設立一間充滿未來科技感的暗黑「毛囊微觀診斷艙」，利用百萬級高倍數位頭皮檢測儀器，現場幫消費者照出高畫質頭皮微觀圖像，並由專業師資以「奇蹟生髮梳」結合天然精油，提供極度舒適的 5 分鐘頭皮激活 SPA 體驗。",
+                loop: "【線上】廣告發放「#救救我的髮際線」高雄在地免費檢測體驗券，精準捕捉脫髮焦慮者；【線下】現場體驗震撼的高清微觀對比與奇蹟梳的極致體感，發放帶有「頭皮AI診斷報告連結」與專屬折扣碼的實體卡片；【轉化】消費者線上點擊報告即可加購奇蹟梳，並享有保固全面升級服務，精準痛點轉換率高達 20% 以上。",
+                prompt: "請扮演資深零售通路行銷總監。我們的主題是「奇蹟生髮梳」，預計在駁二特區舉辦一場 O2O 快閃活動。請幫我們規劃：\n1. 面對頭皮與生髮這類「具有隱私、怕被看見」的消費者痛點，我們該如何包裝線下快閃活動，讓消費者願意大方走進快閃店體驗？\n2. 檢測結束後，我們該如何巧妙將「高單價奇蹟生髮梳」的實體價值，轉化為線上購物的急迫感？\n3. 協助我們預算這場高單價科技產品快閃活動的合理客單與提袋率。"
+            },
+            raincoat: {
+                title: "暴風雨美學室內體驗亭",
+                badge: "遮風擋雨雨衣組",
+                watermark: "RAIN",
+                experience: "現場搭建一座用全透明壓克力圍成、內部有七彩發光霓虹燈效果的「暴風雨實驗模擬亭」。參觀者穿著最新設計的時尚美學雨衣，走進亭中體驗狂風暴雨。內部設有極限防水拍照慢動作鏡頭，供網美拍出水滴四濺的大師級動作視覺照。",
+                loop: "【線上】在高雄多雨季節發放「#狂風暴雨不怕醜」時尚街拍徵集；【線下】到現場穿著設計師雨衣進入風雨亭，獲得高畫質慢動作防水影片（內建品牌浮水印與官網 QR Code）；【轉化】消費者為獲得該酷炫影片，高機率填寫信箱或加入 Line 好友，並在收到影片的同時，獲得限時 24 小時的線上專屬預購連結，轉化率傲視同業。",
+                prompt: "請扮演資深零售通路行銷總監。我們的主題是「遮風擋雨雨衣」，預計在駁二特區舉辦一場 O2O 快閃活動。請幫我們規劃：\n1. 在快閃現場打造「室內暴風雨體驗亭」的技術可行性、安全考量與美學拍照點要怎麼設計，才能達到最高的社群裂變係數 (Viral Coefficient)？\n2. 消費者體驗完，拿到慢動作視頻後，如何透過電子郵件與專屬優惠，在線上引發「暴風雨過後」的集體大採購？\n3. 如何量化這類具社群渲染力的活動 ROI？"
+            }
+        };
+
+        // Theme Switch Logic
+        function switchTheme(key) {
+            const data = themeData[key];
+            if (!data) return;
+
+            // Remove active classes from all tabs
+            document.querySelectorAll('.theme-tab').forEach(tab => {
+                tab.classList.remove('bg-brand-500/5', 'border-brand-500/30', 'text-brand-400');
+                tab.classList.add('bg-white/5', 'border-white/5', 'text-slate-400');
+            });
+
+            // Add active classes to selected tab
+            const activeTab = document.getElementById(`tab-${key}`);
+            if (activeTab) {
+                activeTab.classList.remove('bg-white/5', 'border-white/5', 'text-slate-400');
+                activeTab.classList.add('bg-brand-500/5', 'border-brand-500/30', 'text-brand-400');
+            }
+
+            // Update Panel details with smooth opacity transition
+            const panel = document.getElementById('theme-panel');
+            panel.style.opacity = '0.3';
+            setTimeout(() => {
+                document.getElementById('theme-title').innerText = data.title;
+                document.getElementById('theme-badge').innerText = data.badge;
+                document.getElementById('theme-experience').innerText = data.experience;
+                document.getElementById('theme-loop').innerText = data.loop;
+                document.getElementById('prompt-box').value = data.prompt;
+                document.getElementById('theme-watermark').innerText = data.watermark;
+                panel.style.opacity = '1';
+            }, 150);
+        }
+
+        // Copy Clipboard Helper (Uses document.execCommand for safe iframe execution)
+        function copyTextToClipboard(textId) {
+            const copyText = document.getElementById(textId);
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+            try {
+                document.execCommand('copy');
+                showToast("指令複製成功！趕快貼到 AI 工具吧 🚀");
+            } catch (err) {
+                showToast("複製失敗，請手動複製！");
+            }
+        }
+
+        function copyPrompt() {
+            copyTextToClipboard('prompt-box');
+        }
+
+        function copyGlobalPrompt() {
+            copyTextToClipboard('global-finance-prompt');
+        }
+
+        // Custom Toast Notification System
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = message;
+            
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3000);
+        }
+
+        // Accordion for Timeline
+        function toggleTimeline(id) {
+            const content = document.getElementById(`content-${id}`);
+            const arrow = document.getElementById(`arrow-${id}`);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                arrow.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                arrow.classList.remove('rotate-180');
+            }
+        }
+
+        // Accordion for Rubrics
+        function toggleRubric(id) {
+            const rubric = document.getElementById(`rubric-${id}`);
+            if (rubric.classList.contains('hidden')) {
+                rubric.classList.remove('hidden');
+            } else {
+                rubric.classList.add('hidden');
+            }
+        }
+
+        // Syllabus Modal
+        function toggleSyllabusModal() {
+            const modal = document.getElementById('syllabus-modal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+            } else {
+                modal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+        }
+
+        // Interactive ROI and Conversion Funnel Calculator
+        function calculateROI() {
+            const traffic = parseInt(document.getElementById('input-traffic').value);
+            const stopRate = parseInt(document.getElementById('input-stop').value);
+            const engageRate = parseInt(document.getElementById('input-engage').value);
+            const purchaseRate = parseInt(document.getElementById('input-purchase').value);
+            const aov = parseInt(document.getElementById('input-aov').value);
+            const budget = parseInt(document.getElementById('input-budget').value);
+
+            // Update sliders labels
+            document.getElementById('val-traffic').innerText = traffic.toLocaleString() + " 人";
+            document.getElementById('val-stop').innerText = stopRate + " %";
+            document.getElementById('val-engage').innerText = engageRate + " %";
+            document.getElementById('val-purchase').innerText = purchaseRate + " %";
+            document.getElementById('val-aov').innerText = "NT$ " + aov.toLocaleString();
+            document.getElementById('val-budget').innerText = "NT$ " + budget.toLocaleString();
+
+            // Calculate step-by-step Funnel
+            const stopPeople = Math.round(traffic * (stopRate / 100));
+            const engagePeople = Math.round(stopPeople * (engageRate / 100));
+            const purchaseCount = Math.round(engagePeople * (purchaseRate / 100));
+            const revenue = purchaseCount * aov;
+            const roi = ((revenue - budget) / budget) * 100;
+
+            // Update visualization outputs
+            document.getElementById('show-traffic').innerText = traffic.toLocaleString() + " 人";
+            document.getElementById('show-stop').innerText = stopPeople.toLocaleString() + " 人";
+            document.getElementById('show-engage').innerText = engagePeople.toLocaleString() + " 人";
+            document.getElementById('show-purchase').innerText = purchaseCount.toLocaleString() + " 件";
+            
+            // Adjust visual progress bars
+            const stopPercent = (stopPeople / traffic) * 100;
+            const engagePercent = (engagePeople / traffic) * 100;
+            const purchasePercent = (purchaseCount / traffic) * 100;
+
+            document.getElementById('bar-stop').style.width = stopPercent + "%";
+            document.getElementById('bar-engage').style.width = engagePercent + "%";
+            document.getElementById('bar-purchase').style.width = Math.min(purchasePercent * 10, 100) + "%"; // scale up slightly for better visibility if very low
+
+            // Render Revenue & ROI Text
+            document.getElementById('result-revenue').innerText = "NT$ " + revenue.toLocaleString();
+            
+            const roiElement = document.getElementById('result-roi');
+            const roiContainer = document.getElementById('roi-container');
+            const feedback = document.getElementById('simulator-feedback');
+            
+            roiElement.innerText = roi.toFixed(2) + " %";
+
+            if (roi >= 0) {
+                // Profitable!
+                roiElement.className = "text-lg sm:text-2xl font-black text-green-400 mt-1 font-mono";
+                roiContainer.className = "bg-brand-darkBg/60 p-4 rounded-xl border border-green-500/25";
+                feedback.className = "p-3 rounded-lg bg-green-500/10 border border-green-500/20 text-[11px] text-green-300 leading-relaxed";
+                feedback.innerHTML = "✅ <strong>財務總監微笑點頭：</strong>完美！目前 ROI 為正值。此數據閉環架構在邏輯上具備高可行性，現在趕快將這個預測數據整理到一頁企劃書中吧！";
+            } else {
+                // Loss!
+                roiElement.className = "text-lg sm:text-2xl font-black text-red-400 mt-1 font-mono";
+                roiContainer.className = "bg-brand-darkBg/60 p-4 rounded-xl border border-red-500/25";
+                feedback.className = "p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20 text-[11px] text-yellow-300 leading-relaxed";
+                feedback.innerHTML = "⚠️ <strong>財務總監毒舌警告：</strong>目前 ROI 為負值！這代表你們的活動支出大於營收。試著提升「進店率」或調高「商品單價」來達成損益兩平，否則這份企劃將在課堂上被投資人無情退件。";
+            }
+        }
+
+        // On window load initialization
+        window.onload = function() {
+            // Initial calculations
+            calculateROI();
+            // Automatically expand Phase 2 just for visualization
+            toggleTimeline(2);
+        }
+    </script>
+</body>
+</html>
